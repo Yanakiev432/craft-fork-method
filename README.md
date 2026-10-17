@@ -17,7 +17,7 @@ This is not a universal automated source-code transformation. It is a gated engi
 9. **Upstream sync**: track upstream SHA, review upstream changes and conflicts, re-run the full gate before merge.
 10. **Release**: tag only after acceptance; publish source and required notices. No implicit CI/Actions requirement.
 
-See [detailed gates](docs/GATES.md), [manifest schema](templates/edition-manifest.json) and [PowerShell baseline helper](scripts/New-CraftBaseline.ps1).
+See [plugin orchestration and tool responsibilities](docs/PLUGIN_ORCHESTRATION.md), [detailed gates](docs/GATES.md), [manifest schema](templates/edition-manifest.json) and [PowerShell baseline helper](scripts/New-CraftBaseline.ps1).
 
 ## Rules
 
@@ -30,3 +30,4 @@ See [detailed gates](docs/GATES.md), [manifest schema](templates/edition-manifes
 ## License
 
 MIT (original workflow documentation and helper scripts). Third-party code keeps its original license.
+
