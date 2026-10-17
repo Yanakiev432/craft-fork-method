@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0",
+  "edition": "example-craft-edition",
+  "upstream": {
+    "url": "https://github.com/example/upstream",
+    "commit_sha": "REPLACE_WITH_FULL_40_CHAR_SHA",
+    "license": "VERIFY_SPDX"
+  },
+  "craft": {
+    "repository": "https://github.com/Yanakiev432/example-craft-edition",
+    "baseline_branch": "upstream-baseline",
+    "integration_branch": "integration/craft"
+  },
+  "acceptance": {
+    "license_review": false,
+    "baseline_build": false,
+    "tests": false,
+    "security_review": false,
+    "rollback_ready": false
+  }
+}
