@@ -10,7 +10,7 @@
       "brand_source_ci": "PASS",
       "packaging_lint_ci": "PASS",
       "full_ci": "IN_PROGRESS",
-      "integration_test_rfc3161": "IN_PROGRESS",
+      "integration_test_rfc3161": "LIVE_WINDOWS_SUCCESS; INDEPENDENT_LINUX_IN_PROGRESS",
       "prior_nonqualified_e2e": "PASS",
       "prior_independent_poppler_openssl": "PASS",
       "prior_local_eu_dss": "INDETERMINATE_EXPECTED_TEST_IDENTITY"
@@ -31,8 +31,9 @@
       "brand_source_ci": "PASS",
       "packaging_lint_ci": "PASS",
       "full_ci": "IN_PROGRESS",
-      "integrated_windows_opc_sign_verify": "IN_PROGRESS",
-      "prior_windows_opc_sign_verify": "PASS"
+      "integrated_windows_opc_sign_verify": "PASS",
+      "prior_windows_opc_sign_verify": "PASS",
+      "integrated_windows_opc_evidence": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324667825"
     }
   },
   "compliance": {
@@ -57,7 +58,12 @@
     "pdfcraft_brand_gate": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39325007046",
     "wordcraft_brand_gate": "https://github.com/Yanakiev432/wordcraft/actions/runs/39324669239",
     "gridcraft_brand_gate": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324674814",
-    "craft_method": "https://github.com/Yanakiev432/craft-fork-method/pull/1"
+    "craft_method": "https://github.com/Yanakiev432/craft-fork-method/pull/1",
+    "pdfcraft_integrated_live_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39325001378",
+    "wordcraft_integrated_opc": "https://github.com/Yanakiev432/wordcraft/actions/runs/39324661195",
+    "gridcraft_integrated_opc": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324667825",
+    "pdfcraft_integrated_full_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39325007059",
+    "gridcraft_integrated_full_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324674853"
   },
   "release_policy": "Never merge or publish a qualified/trusted release on the strength of synthetic cryptographic tests, signed upstream binaries or completed non-signing CI alone.",
   "next_required_actions": [
@@ -67,5 +73,12 @@
     "Apply for SignPath Foundation OSS, receive written approval, set manual approval and origin-verified trusted build",
     "Sign and independently verify own MSI/EXE and run Windows SAC install/uninstall gate",
     "Finish latest integrated full CI and human PR reviews"
+  ],
+  "audit_notes": [
+    "Integration source includes RFC3161 signing + SHA-bound QES freshness + source-brand cleanup in one PdfCraft commit",
+    "No user document, B-Trust physical token or PIN was used for synthetic E2E tests",
+    "GridCraft integrated Windows OPC signing acceptance successful; additional full CI still in progress",
+    "All three upstream MSI Authenticode signatures are valid; no fork-produced MSI code signing yet",
+    "Previous PdfCraft Clippy BRAND_LICENCE dead-code defect corrected with cfg(test) in merged integration, latest full CI pending"
   ]
 }
