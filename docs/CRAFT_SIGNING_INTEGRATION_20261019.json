@@ -1,0 +1,71 @@
+{
+  "schema": "craft.signing.integration-checkpoint.v2",
+  "as_of_utc": "2026-10-19",
+  "overall_release_ready": false,
+  "software": {
+    "pdfcraft": {
+      "repo": "Yanakiev432/pdfcraft",
+      "sha": "a800740c12fe44bfb5e9b462cee3efa5b41479aa",
+      "pr": "https://github.com/Yanakiev432/pdfcraft/pull/11",
+      "brand_source_ci": "PASS",
+      "packaging_lint_ci": "PASS",
+      "full_ci": "IN_PROGRESS",
+      "integration_test_rfc3161": "IN_PROGRESS",
+      "prior_nonqualified_e2e": "PASS",
+      "prior_independent_poppler_openssl": "PASS",
+      "prior_local_eu_dss": "INDETERMINATE_EXPECTED_TEST_IDENTITY"
+    },
+    "wordcraft": {
+      "repo": "Yanakiev432/wordcraft",
+      "sha": "3d9ffc14b99d79eb1621d133a0d9d852da58e66e",
+      "pr": "https://github.com/Yanakiev432/wordcraft/pull/4",
+      "brand_source_ci": "PASS",
+      "packaging_lint_ci": "PASS",
+      "integrated_windows_opc_sign_verify": "IN_PROGRESS",
+      "prior_windows_opc_sign_verify": "PASS"
+    },
+    "gridcraft": {
+      "repo": "Yanakiev432/gridcraft",
+      "sha": "2d1729346562e894f391d18958e1df7fa7ad22ed",
+      "pr": "https://github.com/Yanakiev432/gridcraft/pull/4",
+      "brand_source_ci": "PASS",
+      "packaging_lint_ci": "PASS",
+      "full_ci": "IN_PROGRESS",
+      "integrated_windows_opc_sign_verify": "IN_PROGRESS",
+      "prior_windows_opc_sign_verify": "PASS"
+    }
+  },
+  "compliance": {
+    "removed_restricted_upstream_artcraft_source_files": 27,
+    "pdfcraft_removed_upstream_branded_home_screenshot": true,
+    "original_application_icons_separately_open_licensed": true,
+    "signed_upstream_msi_pdfcraft": "AUTHENTICODE_VALID",
+    "signed_upstream_msi_wordcraft": "AUTHENTICODE_VALID",
+    "signed_upstream_msi_gridcraft": "AUTHENTICODE_VALID",
+    "signpath_foundation_application": "NOT_SUBMITTED_OR_APPROVED",
+    "free_qualified_tsa": "NOT_ACCEPTED_AS_PRODUCTION_SERVICE",
+    "btrust_document_qes_baseline_b": "PREVIOUS_INDEPENDENT_PASS",
+    "final_pades_b_t": "NO_QUALIFIED_INDEPENDENT_PASS",
+    "final_pades_b_lt": "NO_GO",
+    "final_pades_b_lta": "NO_GO",
+    "real_btrust_usb_word_excel_interoperability": "NOT_CHECKED",
+    "trusted_signed_our_own_exe_msi": "NOT_AVAILABLE",
+    "clean_windows_sac_install_uninstall": "NOT_CHECKED"
+  },
+  "links": {
+    "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
+    "pdfcraft_brand_gate": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39325007046",
+    "wordcraft_brand_gate": "https://github.com/Yanakiev432/wordcraft/actions/runs/39324669239",
+    "gridcraft_brand_gate": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324674814",
+    "craft_method": "https://github.com/Yanakiev432/craft-fork-method/pull/1"
+  },
+  "release_policy": "Never merge or publish a qualified/trusted release on the strength of synthetic cryptographic tests, signed upstream binaries or completed non-signing CI alone.",
+  "next_required_actions": [
+    "Obtain qualified TSA service/appropriate use authorization and verify token against EU Trusted Lists",
+    "Independent EU DSS validation of real final B-Trust B-T/LT/LTA PDF",
+    "Physical B-Trust PIN via provider UI for Office acceptance",
+    "Apply for SignPath Foundation OSS, receive written approval, set manual approval and origin-verified trusted build",
+    "Sign and independently verify own MSI/EXE and run Windows SAC install/uninstall gate",
+    "Finish latest integrated full CI and human PR reviews"
+  ]
+}
