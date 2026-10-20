@@ -34,7 +34,28 @@
       "release_publisher_gate_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39389665100",
       "release_software_signature": "NOT_PROVIDED",
       "safe_release_no_go_pr": "https://github.com/Yanakiev432/pdfcraft/pull/14",
-      "release_policy_gate_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39390422538"
+      "release_policy_gate_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39390422538",
+      "integrated_all_pr": "https://github.com/Yanakiev432/pdfcraft/pull/15",
+      "integrated_all_sha": "4eb8aa42e3e3418bc156dcc9c6b69e04f8af9690",
+      "integrated_all_merge_parents": [
+        "e9bfbc6062d2af5e8971aa9157104b59a0e83452",
+        "3d5649469b4ce9aaabd684609af3af6e80ebbe16",
+        "520f3eb742c46130366f6d7c2a30d04f1acdd674"
+      ],
+      "integrated_all_ci": {
+        "full": "IN_PROGRESS",
+        "full_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988822",
+        "native_handoff": "IN_PROGRESS",
+        "native_handoff_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988598",
+        "offline_tsqtss_pair": "PASS",
+        "offline_tsqtss_pair_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988848",
+        "release_signer_and_immutable_ref": "PASS",
+        "release_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988777",
+        "brand_gate": "PASS",
+        "brand_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988860",
+        "packaging_lint": "PASS",
+        "packaging_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406989159"
+      }
     },
     "wordcraft": {
       "repo": "Yanakiev432/wordcraft",
@@ -164,6 +185,9 @@
     "2026-10-20: Publisher certificate, authorization and authenticated Windows SAC acceptance remain external prerequisites",
     "2026-10-20: packaging lint/actionlint and negative trusted-release tests PASS for all three draft branches after fail-closed release preflight replaced constant condition.",
     "2026-10-20: no public release workflow allowed to pass signing credentials or upload binaries until verified signed-artefact pipeline is reviewed and enabled.",
-    "2026-10-20: BORICA response does not block the software implementation, but QTSA qualification and EU DSS final QES/qualified timestamps still require real evidence."
+    "2026-10-20: BORICA response does not block the software implementation, but QTSA qualification and EU DSS final QES/qualified timestamps still require real evidence.",
+    "2026-10-20: PdfCraft PR #15 integration candidate combines PRs #12/#13/#14 by three-parent Git merge; overlays 7 disjoint files, no rebasing or resets; full CI pending",
+    "2026-10-20: Prior PdfCraft SHA e9bfbc6 full Windows/Linux/wasm/dependency CI PASS in run 39388076042",
+    "2026-10-20: Current CI on combined source PR #15: offline TSQ/TSR, brand, packaging, security release gates PASS; Windows/Linux full checks and native manual handoff in progress"
   ]
 }
