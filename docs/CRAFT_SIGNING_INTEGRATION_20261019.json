@@ -55,7 +55,7 @@
         "brand_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988860",
         "packaging_lint": "PASS",
         "packaging_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406989159",
-        "arm64": "IN_PROGRESS_UNSIGNED_BUILD",
+        "arm64": "PASS_BUILD_PACKAGE_INSTALL_RUN_UNINSTALL",
         "arm64_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406989426"
       }
     },
@@ -75,7 +75,11 @@
       "release_publisher_sha256_gate": "IMPLEMENTED; NEGATIVE_CI_PASS",
       "release_publisher_gate_ci": "https://github.com/Yanakiev432/wordcraft/actions/runs/39389674261",
       "safe_release_no_go_pr": "https://github.com/Yanakiev432/wordcraft/pull/5",
-      "release_policy_gate_ci": "https://github.com/Yanakiev432/wordcraft/actions/runs/39390387041"
+      "release_policy_gate_ci": "https://github.com/Yanakiev432/wordcraft/actions/runs/39390387041",
+      "current_release_head": "d6811ab1d70b5b068964de74b490fea21e749add",
+      "current_core_pin": "080adc424c4b8f32d2f00e9fdad096e1be6ac85a",
+      "current_opc_run": "https://github.com/Yanakiev432/wordcraft/actions/runs/39408792872",
+      "current_opc_state": "IN_PROGRESS"
     },
     "gridcraft": {
       "repo": "Yanakiev432/gridcraft",
@@ -95,7 +99,11 @@
       "release_publisher_sha256_gate": "IMPLEMENTED; NEGATIVE_CI_PASS",
       "release_publisher_gate_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39389679277",
       "safe_release_no_go_pr": "https://github.com/Yanakiev432/gridcraft/pull/5",
-      "release_policy_gate_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39390394255"
+      "release_policy_gate_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39390394255",
+      "current_release_head": "33a1095642d71d6edcd11331bb0510c626dffed1",
+      "current_core_pin": "080adc424c4b8f32d2f00e9fdad096e1be6ac85a",
+      "current_opc_run": "https://github.com/Yanakiev432/gridcraft/actions/runs/39408799962",
+      "current_opc_state": "PASS"
     },
     "craft-signing-core": {
       "repo": "Yanakiev432/craft-signing-core",
@@ -110,7 +118,9 @@
       "test_identity": "EPHEMERAL_IN_MEMORY_SELF_SIGNED",
       "btrust_real_hardware": "NOT_TESTED",
       "eidas_qualified": "NOT_VERIFIED",
-      "temporary_repo_writer_workflow": "REMOVED"
+      "temporary_repo_writer_workflow": "REMOVED",
+      "review_state": "READY_FOR_REVIEW; NOT_MERGED",
+      "mergeable": true
     }
   },
   "compliance": {
@@ -165,6 +175,18 @@
       "key_usage_caveat": "HasPrivateKey is a provider property, not proof of token availability or authorization",
       "provider_pin_requested": false,
       "document_signed": false
+    },
+    "exact_head_cross_app_monitor": {
+      "script": "https://github.com/Yanakiev432/craft-fork-method/blob/feature/craft-signing-release-gates-20261019/scripts/Test-CraftRemoteIntegration.ps1",
+      "ci": "PASS",
+      "report_win_path": "C:\\Users\\User\\Documents\\CraftReleaseAudits\\integration-20261020-verified-02.json",
+      "report_sha256": "8fe89e6a4d7d1d0a8614994bc4ba0872dc08f69081d3650f3cf7f5445887878d",
+      "stale_head_rejected": true,
+      "missing_ci_rejected": true,
+      "failed_ci_rejected": true,
+      "json_roundtrip": "PASS",
+      "live_exact_commit_ci_ready": false,
+      "live_trusted_release_ready": false
     }
   },
   "links": {
@@ -218,6 +240,9 @@
     "2026-10-20: Current CI on combined source PR #15: offline TSQ/TSR, brand, packaging, security release gates PASS; Windows/Linux full checks and native manual handoff in progress",
     "2026-10-20: shared core Rust CI Windows/Linux and OPC synthetic DOCX/XLSX E2E PASS in #39408410458; one-time write-capable format workflow removed",
     "2026-10-20: PR #15 all-signing candidate native manual TSA/CNG and 4 other gates PASS; Windows/Linux CI and ARM64 unsigned cross-build still running",
-    "2026-10-20: RA agent CurrentUser/My B-Trust issuer certificates read-only inventory only; no private key use, no PIN"
+    "2026-10-20: RA agent CurrentUser/My B-Trust issuer certificates read-only inventory only; no private key use, no PIN",
+    "2026-10-20: user Lenovo read-only exact head PR audit captured as integration-20261020-verified-02.json SHA256 8fe89e6a...; all heads match, CI incomplete; trusted release NO_GO",
+    "2026-10-20: common signer PR #3 CI green and ready for human review, not merged; WordCraft/GridCraft latest workflows pinned to passing shared signer commit 080adc4",
+    "2026-10-20: updated remote integration source JSON writer and fail-closed negative checks verified in run #39409709164"
   ]
 }
