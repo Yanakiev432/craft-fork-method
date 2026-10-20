@@ -178,7 +178,6 @@
     },
     "exact_head_cross_app_monitor": {
       "script": "https://github.com/Yanakiev432/craft-fork-method/blob/feature/craft-signing-release-gates-20261019/scripts/Test-CraftRemoteIntegration.ps1",
-      "ci": "PASS",
       "report_win_path": "C:\\Users\\User\\Documents\\CraftReleaseAudits\\integration-20261020-verified-02.json",
       "report_sha256": "8fe89e6a4d7d1d0a8614994bc4ba0872dc08f69081d3650f3cf7f5445887878d",
       "stale_head_rejected": true,
@@ -186,7 +185,9 @@
       "failed_ci_rejected": true,
       "json_roundtrip": "PASS",
       "live_exact_commit_ci_ready": false,
-      "live_trusted_release_ready": false
+      "live_trusted_release_ready": false,
+      "ci_status": "PASS",
+      "ci_url": "https://github.com/Yanakiev432/craft-fork-method/actions/runs/39409709164"
     }
   },
   "links": {
