@@ -19,10 +19,11 @@
       "latest_quality_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39380355034",
       "pending_manual_pair_validation": "PR12_CI_OFFLINE_PASS",
       "manual_pair_verifier_pr": "https://github.com/Yanakiev432/pdfcraft/pull/12",
-      "pending_inflight_manual_tsrsession": "NATIVE_SYNTHETIC_RUST_PDF_E2E_PASS; WINDOWS_CNG_COMPILE_IN_PROGRESS",
+      "pending_inflight_manual_tsrsession": "PASS_NATIVE_INFLIGHT_CRYPTOGRAPHIC_PDF_E2E_AND_WINDOWS_CNG_COMPILE",
       "inflight_manual_tsa_pr": "https://github.com/Yanakiev432/pdfcraft/pull/13",
       "inflight_manual_tsa_sha": "88a294bbd9a3e57ecd5079ff99094d4886ffb9b3",
-      "inflight_manual_tsa_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39384816399"
+      "inflight_manual_tsa_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39384816399",
+      "windows_cng_manual_tsa_compile": "PASS"
     },
     "wordcraft": {
       "repo": "Yanakiev432/wordcraft",
@@ -69,10 +70,10 @@
     "offline_resumable_PAdES_session": "NOT_IMPLEMENTED; IN_FLIGHT_ONE_PROCESS_SESSION_IMPLEMENTED",
     "signpath_foundation_fork_signed_upstream": "PASS",
     "signpath_foundation_public_release_and_project_reputation_gate": "NOT_VERIFIED",
-    "manual_tsa_source_and_verifier": "NATIVE_CMS_SAME_SIGNATURE_E2E_PASS; MANUAL_TSQ_TSR_PAIR_PASS; WINDOWS_CNG_HARDWARE_NOT_TESTED",
+    "manual_tsa_source_and_verifier": "PASS_SOFTWARE_TEST_E2E_AND_WINDOWS_CNG_COMPILATION; REAL_HARDWARE_AND_QTSA_NOT_CHECKED",
     "provider_qtsa_qualified_at_gentime": "NOT_CHECKED",
     "native_manual_tsq_tsr_protocol": "NO_NETWORK_IMPLEMENTED_AND_TESTED",
-    "windows_cng_manual_smartcard_signing_example": "IMPLEMENTED; COMPILATION_PENDING; HARDWARE_PIN_INTEROP_PENDING"
+    "windows_cng_manual_smartcard_signing_example": "COMPILES_SUCCESSFULLY; HARDWARE_PIN_INTEROP_PENDING"
   },
   "links": {
     "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
