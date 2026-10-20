@@ -57,7 +57,8 @@
         "packaging_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406989159",
         "arm64": "PASS_BUILD_PACKAGE_INSTALL_RUN_UNINSTALL",
         "arm64_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406989426"
-      }
+      },
+      "review_status": "READY_FOR_REVIEW; CLEAN; NOT_MERGED"
     },
     "wordcraft": {
       "repo": "Yanakiev432/wordcraft",
@@ -81,7 +82,8 @@
       "current_opc_run": "https://github.com/Yanakiev432/wordcraft/actions/runs/39408792872",
       "current_opc_state": "PASS",
       "current_arm64_state": "PASS_BUILD_PACKAGE_INSTALL_RUN_UNINSTALL",
-      "current_arm64_run": "https://github.com/Yanakiev432/wordcraft/actions/runs/39408797427"
+      "current_arm64_run": "https://github.com/Yanakiev432/wordcraft/actions/runs/39408797427",
+      "review_status": "READY_FOR_REVIEW; CLEAN; NOT_MERGED"
     },
     "gridcraft": {
       "repo": "Yanakiev432/gridcraft",
@@ -107,7 +109,8 @@
       "current_opc_run": "https://github.com/Yanakiev432/gridcraft/actions/runs/39408799962",
       "current_opc_state": "PASS",
       "current_full_ci_state": "PASS",
-      "current_full_ci_run": "https://github.com/Yanakiev432/gridcraft/actions/runs/39408804695"
+      "current_full_ci_run": "https://github.com/Yanakiev432/gridcraft/actions/runs/39408804695",
+      "review_status": "READY_FOR_REVIEW; CLEAN; NOT_MERGED"
     },
     "craft-signing-core": {
       "repo": "Yanakiev432/craft-signing-core",
@@ -123,7 +126,7 @@
       "btrust_real_hardware": "NOT_TESTED",
       "eidas_qualified": "NOT_VERIFIED",
       "temporary_repo_writer_workflow": "REMOVED",
-      "review_state": "READY_FOR_REVIEW; NOT_MERGED",
+      "review_state": "READY_FOR_REVIEW; CLEAN; NOT_MERGED",
       "mergeable": true
     }
   },
@@ -202,7 +205,12 @@
       "outstanding_workflows": []
     },
     "software_integration_ci": "PASS_18_OF_18_REQUIRED_EXACT_COMMIT_CHECKS",
-    "external_qualified_release_gate": "NO_GO"
+    "external_qualified_release_gate": "NO_GO",
+    "integration_review_evidence": "docs/CRAFT_SIGNING_SOURCE_REVIEW_EVIDENCE_20261020.json",
+    "integration_review_packet": "docs/CRAFT_SIGNING_SOURCE_REVIEW_20261020.md",
+    "integration_ci": "PASS_18_OF_18_SOURCE_GATE",
+    "trusted_release_status": "NO_GO",
+    "qualifed_tsa_provider_unrestricted": "NOT_ESTABLISHED"
   },
   "links": {
     "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
