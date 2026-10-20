@@ -47,8 +47,13 @@ jobs:
           if(-not $positive.exact_commit_ci_ready -or $positive.trusted_release_ready){throw 'CI cannot grant trusted release; positive integration should pass'}
           if(@($positive.repositories | Where-Object {-not $_.integration_ci_ready}).Count -ne 0){throw 'Valid fixture CI not accepted'}
           $jsonPath=Join-Path $env:RUNNER_TEMP 'exact-head-report.json'
+          # A successful invoked PowerShell script does not reset the shell's
+          # stale LASTEXITCODE from unrelated earlier native commands.
+          # ErrorActionPreference=Stop and JSON read-back are authoritative.
           & $script -SnapshotFile $path -OutputFile $jsonPath | Out-Null
-          if($LASTEXITCODE -ne 0){throw 'Report generation returned failure'}
+          if(-not (Test-Path -LiteralPath $jsonPath -PathType Leaf)){
+            throw 'Report generation did not create its output'
+          }
           $written=Get-Content -LiteralPath $jsonPath -Raw | ConvertFrom-Json -Depth 25
           if(-not $written.exact_commit_ci_ready -or $written.trusted_release_ready){
             throw 'Report JSON roundtrip invalid or release gate failed open'
