@@ -1,0 +1,44 @@
+name: Craft reviewed main merge provenance
+on:
+  pull_request:
+    paths:
+      - 'docs/CRAFT_MAIN_MERGE_PROVENANCE_20261020.json'
+      - 'scripts/check_craft_main_promotion.py'
+      - '.github/workflows/main-merge-provenance.yml'
+  push:
+    branches:
+      - main
+      - feature/main-merge-provenance-check-20261020
+    paths:
+      - 'docs/CRAFT_MAIN_MERGE_PROVENANCE_20261020.json'
+      - 'scripts/check_craft_main_promotion.py'
+      - '.github/workflows/main-merge-provenance.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  proof-of-reviewed-main-merge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Validate manifest and malicious-rewrite regressions
+        run: python3 -B scripts/check_craft_main_promotion.py --self-test
+      - name: Check current GitHub main source trees and release denial, read only
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 -B scripts/check_craft_main_promotion.py --live
+      - name: No external qualification from a source merge
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          manifest=json.loads(Path('docs/CRAFT_MAIN_MERGE_PROVENANCE_20261020.json').read_text())
+          assert manifest['technical_source_merged_to_main'] is True
+          assert manifest['public_trusted_release_ready'] is False
+          assert manifest['own_code_signed_windows_installer_accepted'] is False
+          assert manifest['qualified_tsa_eidas_tsl_at_gentime_verified'] is False
+          print('MAIN_SOURCE_PROVENANCE=PASS; QUALIFIED_RELEASE=NO_GO')
+          PY
