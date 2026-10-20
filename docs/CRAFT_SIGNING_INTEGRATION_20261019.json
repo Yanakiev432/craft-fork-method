@@ -1,20 +1,22 @@
 {
   "schema": "craft.signing.integration-checkpoint.v2",
-  "as_of_utc": "2026-10-19",
+  "as_of_utc": "2026-10-20",
   "overall_release_ready": false,
   "software": {
     "pdfcraft": {
       "repo": "Yanakiev432/pdfcraft",
-      "sha": "a800740c12fe44bfb5e9b462cee3efa5b41479aa",
+      "sha": "10ea8bc387cc41ef09121e9a4a52edd327660ec7",
       "pr": "https://github.com/Yanakiev432/pdfcraft/pull/11",
       "brand_source_ci": "PASS",
       "packaging_lint_ci": "PASS",
-      "full_ci": "IN_PROGRESS",
-      "integration_test_rfc3161": "PASS_NONQUALIFIED_WINDOWS_AND_INDEPENDENT_LINUX",
+      "full_ci": "RECHECK_RUNNING_AFTER_ABOUT_UI_TEST_FIX",
+      "integration_test_rfc3161": "PASS_INTEGRATED_NONQUALIFIED_OPEN_TSA_E2E",
       "prior_nonqualified_e2e": "PASS",
       "prior_independent_poppler_openssl": "PASS",
       "prior_local_eu_dss": "INDETERMINATE_EXPECTED_TEST_IDENTITY",
-      "integration_test_evidence": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39325001378"
+      "integration_test_evidence": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39325001378",
+      "integration_test_rfc3161_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39325001378",
+      "latest_quality_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39380355034"
     },
     "wordcraft": {
       "repo": "Yanakiev432/wordcraft",
@@ -22,8 +24,9 @@
       "pr": "https://github.com/Yanakiev432/wordcraft/pull/4",
       "brand_source_ci": "PASS",
       "packaging_lint_ci": "PASS",
-      "integrated_windows_opc_sign_verify": "IN_PROGRESS",
-      "prior_windows_opc_sign_verify": "PASS"
+      "integrated_windows_opc_sign_verify": "PASS",
+      "prior_windows_opc_sign_verify": "PASS",
+      "integrated_windows_opc_sign_verify_url": "https://github.com/Yanakiev432/wordcraft/actions/runs/39324661195"
     },
     "gridcraft": {
       "repo": "Yanakiev432/gridcraft",
@@ -31,10 +34,11 @@
       "pr": "https://github.com/Yanakiev432/gridcraft/pull/4",
       "brand_source_ci": "PASS",
       "packaging_lint_ci": "PASS",
-      "full_ci": "IN_PROGRESS",
+      "full_ci": "PASS",
       "integrated_windows_opc_sign_verify": "PASS",
       "prior_windows_opc_sign_verify": "PASS",
-      "integrated_windows_opc_evidence": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324667825"
+      "integrated_windows_opc_evidence": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324667825",
+      "full_ci_url": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324674853"
     }
   },
   "compliance": {
@@ -52,7 +56,13 @@
     "final_pades_b_lta": "NO_GO",
     "real_btrust_usb_word_excel_interoperability": "NOT_CHECKED",
     "trusted_signed_our_own_exe_msi": "NOT_AVAILABLE",
-    "clean_windows_sac_install_uninstall": "NOT_CHECKED"
+    "clean_windows_sac_install_uninstall": "NOT_CHECKED",
+    "btrust_support_ticket": "SD1614999_CREATED_2026-10-19_NO_TECHNICAL_RESPONSE",
+    "btrust_official_nonprofit_manual_tsq_tsr_form": "AVAILABLE_SUBJECT_TO_NONPROFIT_PROVIDER_CONDITIONS",
+    "btrust_official_nonprofit_manual_tsq_tsr_form_url": "https://www.b-trust.bg/services/time-stamp-issue",
+    "offline_resumable_PAdES_session": "NOT_IMPLEMENTED",
+    "signpath_foundation_fork_signed_upstream": "PASS",
+    "signpath_foundation_public_release_and_project_reputation_gate": "NOT_VERIFIED"
   },
   "links": {
     "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
@@ -65,7 +75,8 @@
     "gridcraft_integrated_opc": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324667825",
     "pdfcraft_integrated_full_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39325007059",
     "gridcraft_integrated_full_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324674853",
-    "signpath_application_dossier": "https://github.com/Yanakiev432/craft-fork-method/blob/feature/craft-signing-release-gates-20261019/docs/SIGNPATH_FOUNDATION_APPLICATION_DOSSIER_20261019.md"
+    "signpath_application_dossier": "https://github.com/Yanakiev432/craft-fork-method/blob/feature/craft-signing-release-gates-20261019/docs/SIGNPATH_FOUNDATION_APPLICATION_DOSSIER_20261019.md",
+    "btrust_manual_acceptance": "https://github.com/Yanakiev432/pdfcraft/blob/integration/craft-signing-qa-20261019/docs/BTRUST_MANUAL_QUALIFIED_TSA_ACCEPTANCE.md"
   },
   "release_policy": "Never merge or publish a qualified/trusted release on the strength of synthetic cryptographic tests, signed upstream binaries or completed non-signing CI alone.",
   "next_required_actions": [
@@ -83,6 +94,10 @@
     "All three upstream MSI Authenticode signatures are valid; no fork-produced MSI code signing yet",
     "Previous PdfCraft Clippy BRAND_LICENCE dead-code defect corrected with cfg(test) in merged integration, latest full CI pending",
     "PdfCraft integrated code commit a800740: live Windows synthetic RFC3161 signing + independent Linux Poppler/OpenSSL positive and tamper-negative controls PASS.",
-    "WordCraft integrated Windows OPC and full PdfCraft/GridCraft workflows were still running at latest check; no completion asserted."
+    "WordCraft integrated Windows OPC and full PdfCraft/GridCraft workflows were still running at latest check; no completion asserted.",
+    "On 2026-10-20 the B-Trust email search revealed acknowledgement for SD1614999 only; no credentials or technical reply",
+    "Official B-Trust service webpage permits manual .tsq upload for nonprofit purposes; not an automated API grant",
+    "PdfCraft one old About UI test required deleted upstream logo; regression updated and fmt repaired, latest full CI pending",
+    "SignPath Foundation additionally requires a released public artifact in the intended form and verifiable project reputation. None claimed."
   ]
 }
