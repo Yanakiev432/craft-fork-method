@@ -8,7 +8,7 @@
       "sha": "10ea8bc387cc41ef09121e9a4a52edd327660ec7",
       "pr": "https://github.com/Yanakiev432/pdfcraft/pull/11",
       "brand_source_ci": "PASS",
-      "packaging_lint_ci": "PASS",
+      "packaging_lint_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39390422909",
       "full_ci": "IN_PROGRESS",
       "integration_test_rfc3161": "PASS_INTEGRATED_NONQUALIFIED_OPEN_TSA_E2E",
       "prior_nonqualified_e2e": "PASS",
@@ -32,14 +32,16 @@
       "release_workflow_pin_pr": "https://github.com/Yanakiev432/pdfcraft/pull/14",
       "release_publisher_sha256_gate": "IMPLEMENTED_AND_WINDOWS_NEGATIVE_TEST_PASS",
       "release_publisher_gate_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39389665100",
-      "release_software_signature": "NOT_PROVIDED"
+      "release_software_signature": "NOT_PROVIDED",
+      "safe_release_no_go_pr": "https://github.com/Yanakiev432/pdfcraft/pull/14",
+      "release_policy_gate_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39390422538"
     },
     "wordcraft": {
       "repo": "Yanakiev432/wordcraft",
       "sha": "3d9ffc14b99d79eb1621d133a0d9d852da58e66e",
       "pr": "https://github.com/Yanakiev432/wordcraft/pull/4",
       "brand_source_ci": "PASS",
-      "packaging_lint_ci": "PASS",
+      "packaging_lint_ci": "https://github.com/Yanakiev432/wordcraft/actions/runs/39390387676",
       "integrated_windows_opc_sign_verify": "PASS",
       "prior_windows_opc_sign_verify": "PASS",
       "integrated_windows_opc_sign_verify_url": "https://github.com/Yanakiev432/wordcraft/actions/runs/39324661195",
@@ -48,14 +50,16 @@
       "unsigned_exe_msi_dll_rejection": "PASS",
       "release_gate_pr": "https://github.com/Yanakiev432/wordcraft/pull/5",
       "release_publisher_sha256_gate": "IMPLEMENTED; NEGATIVE_CI_PASS",
-      "release_publisher_gate_ci": "https://github.com/Yanakiev432/wordcraft/actions/runs/39389674261"
+      "release_publisher_gate_ci": "https://github.com/Yanakiev432/wordcraft/actions/runs/39389674261",
+      "safe_release_no_go_pr": "https://github.com/Yanakiev432/wordcraft/pull/5",
+      "release_policy_gate_ci": "https://github.com/Yanakiev432/wordcraft/actions/runs/39390387041"
     },
     "gridcraft": {
       "repo": "Yanakiev432/gridcraft",
       "sha": "2d1729346562e894f391d18958e1df7fa7ad22ed",
       "pr": "https://github.com/Yanakiev432/gridcraft/pull/4",
       "brand_source_ci": "PASS",
-      "packaging_lint_ci": "PASS",
+      "packaging_lint_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39390394816",
       "full_ci": "PASS",
       "integrated_windows_opc_sign_verify": "PASS",
       "prior_windows_opc_sign_verify": "PASS",
@@ -66,7 +70,9 @@
       "unsigned_exe_msi_dll_rejection": "PASS",
       "release_gate_pr": "https://github.com/Yanakiev432/gridcraft/pull/5",
       "release_publisher_sha256_gate": "IMPLEMENTED; NEGATIVE_CI_PASS",
-      "release_publisher_gate_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39389679277"
+      "release_publisher_gate_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39389679277",
+      "safe_release_no_go_pr": "https://github.com/Yanakiev432/gridcraft/pull/5",
+      "release_policy_gate_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39390394255"
     }
   },
   "compliance": {
@@ -98,14 +104,20 @@
     "upstream_release_workflow_ref": "storytold/craft-common-actions@d7bf8f06e138618890d0ebe8a84a18b010bf3f66",
     "upstream_release_workflow_immutable_commit_pinning": "IMPLEMENTED_IN_THREE_DRAFT_PRS",
     "own_release_software_artifact_signed": "NO",
-    "external_signpath_authorization": "NOT_APPROVED",
+    "external_signpath_authorization": "NOT_RECEIVED",
     "release_ready": false,
     "immutable_upstream_release_workflow_sha": "d7bf8f06e138618890d0ebe8a84a18b010bf3f66",
     "publisher_certificate_fingerprint_required": "SHA256_DER_64_HEX",
     "publisher_certificate_preapproved": "NO; SignPath Foundation review pending",
     "upstream_signed_msi_not_our_publisher": "ENFORCED_BY_PIN",
     "trusted_windows_package_release_ready": false,
-    "final_public_release": "NO_GO"
+    "final_public_release": "NO_GO",
+    "manual_development_and_ci": "NOT_BLOCKED_BY_BORICA",
+    "public_release_pipeline": "FAIL_CLOSED_DENYING_PREFLIGHT_IN_THREE_DRAFT_BRANCHES",
+    "publish_signed_msi": "NO_GO",
+    "pades_qtsa_eu_dss_final_positive": "NOT_CHECKED",
+    "publisher_pin_release": "REQUIRES_PREAPPROVED_64_HEX_SHA256_SIGNER_CERT",
+    "immutable_reusable_release_commit": "d7bf8f06e138618890d0ebe8a84a18b010bf3f66"
   },
   "links": {
     "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
@@ -149,6 +161,9 @@
     "2026-10-20: Pdf/Word/Grid release entrypoints pin privileged external reusable workflow to reviewed SHA instead of @main",
     "2026-10-20: Trusted-release Authenticode guard requires a preapproved 64-hex SHA256 certificate digest, rejects an unrelated valid signer, missing pin or unsigned MSI",
     "2026-10-20: Fork public release workflows not yet proven to invoke -RequireTrustedRelease automatically; do not publish until enforced and approved",
-    "2026-10-20: Publisher certificate, authorization and authenticated Windows SAC acceptance remain external prerequisites"
+    "2026-10-20: Publisher certificate, authorization and authenticated Windows SAC acceptance remain external prerequisites",
+    "2026-10-20: packaging lint/actionlint and negative trusted-release tests PASS for all three draft branches after fail-closed release preflight replaced constant condition.",
+    "2026-10-20: no public release workflow allowed to pass signing credentials or upload binaries until verified signed-artefact pipeline is reviewed and enabled.",
+    "2026-10-20: BORICA response does not block the software implementation, but QTSA qualification and EU DSS final QES/qualified timestamps still require real evidence."
   ]
 }
