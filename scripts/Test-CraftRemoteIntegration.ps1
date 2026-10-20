@@ -92,7 +92,7 @@ if($OutputFile){
     $parent=[IO.Path]::GetDirectoryName($absolute)
     if(-not [IO.Directory]::Exists($parent)){throw 'Output parent does not exist'}
     $file=[IO.File]::Open($absolute,[IO.FileMode]::CreateNew,[IO.FileAccess]::Write,[IO.FileShare]::None)
-    try{$bytes=[Text.Encoding]::UTF8.GetBytes($json+"\n");$file.Write($bytes,0,$bytes.Length);$file.Flush($true)}finally{$file.Dispose()}
+    try{$bytes=[Text.Encoding]::UTF8.GetBytes($json+[Environment]::NewLine);$file.Write($bytes,0,$bytes.Length);$file.Flush($true)}finally{$file.Dispose()}
 }
 $json
 if($RequireIntegrationReady -and -not $allReady){exit 1}
