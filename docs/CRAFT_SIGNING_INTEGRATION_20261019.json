@@ -43,7 +43,7 @@
         "520f3eb742c46130366f6d7c2a30d04f1acdd674"
       ],
       "integrated_all_ci": {
-        "full": "IN_PROGRESS_WINDOWS; LINUX_WASM_LICENSES_SUCCESS",
+        "full": "PASS_WINDOWS_LINUX_WASM_DEPENDENCIES",
         "full_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988822",
         "native_handoff": "PASS",
         "native_handoff_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988598",
@@ -80,7 +80,8 @@
       "current_core_pin": "080adc424c4b8f32d2f00e9fdad096e1be6ac85a",
       "current_opc_run": "https://github.com/Yanakiev432/wordcraft/actions/runs/39408792872",
       "current_opc_state": "PASS",
-      "current_arm64_state": "IN_PROGRESS"
+      "current_arm64_state": "PASS_BUILD_PACKAGE_INSTALL_RUN_UNINSTALL",
+      "current_arm64_run": "https://github.com/Yanakiev432/wordcraft/actions/runs/39408797427"
     },
     "gridcraft": {
       "repo": "Yanakiev432/gridcraft",
@@ -105,7 +106,8 @@
       "current_core_pin": "080adc424c4b8f32d2f00e9fdad096e1be6ac85a",
       "current_opc_run": "https://github.com/Yanakiev432/gridcraft/actions/runs/39408799962",
       "current_opc_state": "PASS",
-      "current_full_ci_state": "IN_PROGRESS"
+      "current_full_ci_state": "PASS",
+      "current_full_ci_run": "https://github.com/Yanakiev432/gridcraft/actions/runs/39408804695"
     },
     "craft-signing-core": {
       "repo": "Yanakiev432/craft-signing-core",
@@ -180,29 +182,27 @@
     },
     "exact_head_cross_app_monitor": {
       "script": "https://github.com/Yanakiev432/craft-fork-method/blob/feature/craft-signing-release-gates-20261019/scripts/Test-CraftRemoteIntegration.ps1",
-      "report_win_path": "C:\\Users\\User\\Documents\\CraftReleaseAudits\\integration-20261020-verified-03.json",
-      "report_sha256": "075d5540bc84ad6f71d227e42b1951c86808aa10871a154dcef860686b17b556",
+      "report_win_path": "C:\\Users\\User\\Documents\\CraftReleaseAudits\\integration-20261020-verified-04.json",
+      "report_sha256": "2570e85a6310377c6449a641908db46a47785fb6586dab9617af577eac91dbda",
       "stale_head_rejected": true,
       "missing_ci_rejected": true,
       "failed_ci_rejected": true,
       "json_roundtrip": "PASS",
-      "live_exact_commit_ci_ready": false,
+      "live_exact_commit_ci_ready": true,
       "live_trusted_release_ready": false,
       "ci_status": "PASS",
       "ci_url": "https://github.com/Yanakiev432/craft-fork-method/actions/runs/39409709164",
-      "snapshot_utc": "2026-10-20T10:45:42.0823657Z",
+      "snapshot_utc": "2026-10-20T11:10:15.5898517Z",
       "counts": {
-        "pdfcraft": "6/7",
-        "wordcraft": "4/5",
-        "gridcraft": "4/5",
+        "pdfcraft": "7/7",
+        "wordcraft": "5/5",
+        "gridcraft": "5/5",
         "craft-signing-core": "1/1"
       },
-      "outstanding_workflows": [
-        "pdfcraft: CI (Windows in progress)",
-        "wordcraft: Windows ARM64 (in progress)",
-        "gridcraft: CI (quality gate in progress)"
-      ]
-    }
+      "outstanding_workflows": []
+    },
+    "software_integration_ci": "PASS_18_OF_18_REQUIRED_EXACT_COMMIT_CHECKS",
+    "external_qualified_release_gate": "NO_GO"
   },
   "links": {
     "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
@@ -259,6 +259,8 @@
     "2026-10-20: user Lenovo read-only exact head PR audit captured as integration-20261020-verified-02.json SHA256 8fe89e6a...; all heads match, CI incomplete; trusted release NO_GO",
     "2026-10-20: common signer PR #3 CI green and ready for human review, not merged; WordCraft/GridCraft latest workflows pinned to passing shared signer commit 080adc4",
     "2026-10-20: updated remote integration source JSON writer and fail-closed negative checks verified in run #39409709164",
-    "2026-10-20T10:45Z: second successful machine-readable Lenovo live report verified-03.json SHA256 075d5540...; exact PR heads match, 6/7 PDF, 4/5 Word, 4/5 Grid, 1/1 shared, public release NO_GO"
+    "2026-10-20T10:45Z: second successful machine-readable Lenovo live report verified-03.json SHA256 075d5540...; exact PR heads match, 6/7 PDF, 4/5 Word, 4/5 Grid, 1/1 shared, public release NO_GO",
+    "2026-10-20T11:10Z: live Lenovo v04 read-only audit exact-head checks 18/18 passed, output SHA256 2570e85a6310377c6449a641908db46a47785fb6586dab9617af577eac91dbda",
+    "2026-10-20: software CI passed for all four modules, including PdfCraft full Windows/Linux, WordCraft ARM64 install/run/uninstall, GridCraft full CI, Core OPC. These do not constitute legally qualified QES or an approved signed MSI."
   ]
 }
