@@ -128,6 +128,18 @@
       "temporary_repo_writer_workflow": "REMOVED",
       "review_state": "READY_FOR_REVIEW; CLEAN; NOT_MERGED",
       "mergeable": true
+    },
+    "craft-fork-method": {
+      "repository": "Yanakiev432/craft-fork-method",
+      "pr": "https://github.com/Yanakiev432/craft-fork-method/pull/1",
+      "review_status": "READY_FOR_REVIEW",
+      "merged": false,
+      "acceptance_ci": {
+        "review_packet": "PASS",
+        "cross_repo_ci_negative_tests": "PASS",
+        "qualification_release_fail_closed": "PASS"
+      },
+      "last_reviewed_commit": "7214320df5942c558077efe16bc894adc5b39400"
     }
   },
   "compliance": {
@@ -210,7 +222,19 @@
     "integration_review_packet": "docs/CRAFT_SIGNING_SOURCE_REVIEW_20261020.md",
     "integration_ci": "PASS_18_OF_18_SOURCE_GATE",
     "trusted_release_status": "NO_GO",
-    "qualifed_tsa_provider_unrestricted": "NOT_ESTABLISHED"
+    "qualifed_tsa_provider_unrestricted": "NOT_ESTABLISHED",
+    "review_packet": {
+      "review_url": "https://github.com/Yanakiev432/craft-fork-method/blob/feature/craft-signing-release-gates-20261019/docs/CRAFT_SIGNING_SOURCE_REVIEW_20261020.md",
+      "evidence_url": "https://github.com/Yanakiev432/craft-fork-method/blob/feature/craft-signing-release-gates-20261019/docs/CRAFT_SIGNING_SOURCE_REVIEW_EVIDENCE_20261020.json",
+      "schema": "craft.signing.source-review-evidence.v1",
+      "validation_ci_url": "https://github.com/Yanakiev432/craft-fork-method/actions/runs/39413904210",
+      "status": "PASS",
+      "all_four_source_ci": "18/18_PASS",
+      "trusted_release": "NO_GO"
+    },
+    "actual_signpath_foundation_approval": "NOT_RECEIVED",
+    "actual_btrust_qtsa_positive_final_eu_dss": "NOT_VERIFIED",
+    "public_signed_windows_release": "NO_GO"
   },
   "links": {
     "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
@@ -269,6 +293,8 @@
     "2026-10-20: updated remote integration source JSON writer and fail-closed negative checks verified in run #39409709164",
     "2026-10-20T10:45Z: second successful machine-readable Lenovo live report verified-03.json SHA256 075d5540...; exact PR heads match, 6/7 PDF, 4/5 Word, 4/5 Grid, 1/1 shared, public release NO_GO",
     "2026-10-20T11:10Z: live Lenovo v04 read-only audit exact-head checks 18/18 passed, output SHA256 2570e85a6310377c6449a641908db46a47785fb6586dab9617af577eac91dbda",
-    "2026-10-20: software CI passed for all four modules, including PdfCraft full Windows/Linux, WordCraft ARM64 install/run/uninstall, GridCraft full CI, Core OPC. These do not constitute legally qualified QES or an approved signed MSI."
+    "2026-10-20: software CI passed for all four modules, including PdfCraft full Windows/Linux, WordCraft ARM64 install/run/uninstall, GridCraft full CI, Core OPC. These do not constitute legally qualified QES or an approved signed MSI.",
+    "2026-10-20: review manifest/packet created and validated on GitHub Actions #39413904210; all 4 app/core PRs and method PR ready for review, none merged",
+    "2026-10-20: ACCV explicitly free PERSONAL only; APED publishes HTTPS no-auth setup but rights for unrestricted commercial/automated Craft use remain unestablished; no provider probe sent"
   ]
 }
