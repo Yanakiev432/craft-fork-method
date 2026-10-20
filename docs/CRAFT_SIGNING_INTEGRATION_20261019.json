@@ -43,9 +43,9 @@
         "520f3eb742c46130366f6d7c2a30d04f1acdd674"
       ],
       "integrated_all_ci": {
-        "full": "IN_PROGRESS",
+        "full": "IN_PROGRESS_WINDOWS_LINUX",
         "full_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988822",
-        "native_handoff": "IN_PROGRESS",
+        "native_handoff": "PASS",
         "native_handoff_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988598",
         "offline_tsqtss_pair": "PASS",
         "offline_tsqtss_pair_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988848",
@@ -54,7 +54,9 @@
         "brand_gate": "PASS",
         "brand_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988860",
         "packaging_lint": "PASS",
-        "packaging_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406989159"
+        "packaging_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406989159",
+        "arm64": "IN_PROGRESS_UNSIGNED_BUILD",
+        "arm64_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406989426"
       }
     },
     "wordcraft": {
@@ -94,6 +96,21 @@
       "release_publisher_gate_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39389679277",
       "safe_release_no_go_pr": "https://github.com/Yanakiev432/gridcraft/pull/5",
       "release_policy_gate_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39390394255"
+    },
+    "craft-signing-core": {
+      "repo": "Yanakiev432/craft-signing-core",
+      "source_pr": "https://github.com/Yanakiev432/craft-signing-core/pull/2",
+      "acceptance_pr": "https://github.com/Yanakiev432/craft-signing-core/pull/3",
+      "acceptance_sha": "080adc424c4b8f32d2f00e9fdad096e1be6ac85a",
+      "acceptance_run": "https://github.com/Yanakiev432/craft-signing-core/actions/runs/39408410458",
+      "rust_contracts_linux": "PASS",
+      "rust_contracts_windows": "PASS",
+      "windows_opc_docx_xlsx": "PASS",
+      "tamper_and_unsigned_extra_parts": "REJECTED_PASS",
+      "test_identity": "EPHEMERAL_IN_MEMORY_SELF_SIGNED",
+      "btrust_real_hardware": "NOT_TESTED",
+      "eidas_qualified": "NOT_VERIFIED",
+      "temporary_repo_writer_workflow": "REMOVED"
     }
   },
   "compliance": {
@@ -138,7 +155,17 @@
     "publish_signed_msi": "NO_GO",
     "pades_qtsa_eu_dss_final_positive": "NOT_CHECKED",
     "publisher_pin_release": "REQUIRES_PREAPPROVED_64_HEX_SHA256_SIGNER_CERT",
-    "immutable_reusable_release_commit": "d7bf8f06e138618890d0ebe8a84a18b010bf3f66"
+    "immutable_reusable_release_commit": "d7bf8f06e138618890d0ebe8a84a18b010bf3f66",
+    "ra_windows_personal_store": {
+      "context": "RA_AGENT_CURRENT_USER",
+      "certificate_count": 8,
+      "private_key_links": 7,
+      "btrust_issuer_certs": 2,
+      "btrust_private_key_links": 2,
+      "key_usage_caveat": "HasPrivateKey is a provider property, not proof of token availability or authorization",
+      "provider_pin_requested": false,
+      "document_signed": false
+    }
   },
   "links": {
     "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
@@ -188,6 +215,9 @@
     "2026-10-20: BORICA response does not block the software implementation, but QTSA qualification and EU DSS final QES/qualified timestamps still require real evidence.",
     "2026-10-20: PdfCraft PR #15 integration candidate combines PRs #12/#13/#14 by three-parent Git merge; overlays 7 disjoint files, no rebasing or resets; full CI pending",
     "2026-10-20: Prior PdfCraft SHA e9bfbc6 full Windows/Linux/wasm/dependency CI PASS in run 39388076042",
-    "2026-10-20: Current CI on combined source PR #15: offline TSQ/TSR, brand, packaging, security release gates PASS; Windows/Linux full checks and native manual handoff in progress"
+    "2026-10-20: Current CI on combined source PR #15: offline TSQ/TSR, brand, packaging, security release gates PASS; Windows/Linux full checks and native manual handoff in progress",
+    "2026-10-20: shared core Rust CI Windows/Linux and OPC synthetic DOCX/XLSX E2E PASS in #39408410458; one-time write-capable format workflow removed",
+    "2026-10-20: PR #15 all-signing candidate native manual TSA/CNG and 4 other gates PASS; Windows/Linux CI and ARM64 unsigned cross-build still running",
+    "2026-10-20: RA agent CurrentUser/My B-Trust issuer certificates read-only inventory only; no private key use, no PIN"
   ]
 }
