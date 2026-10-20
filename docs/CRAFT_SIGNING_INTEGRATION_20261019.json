@@ -28,7 +28,11 @@
       "manual_tsa_hardening_commit": "e9bfbc6062d2af5e8971aa9157104b59a0e83452",
       "manual_tsa_hardening_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39388076062",
       "manual_tsa_hardening_targeted_ci": "PASS",
-      "immutable_release_workflow_pr": "https://github.com/Yanakiev432/pdfcraft/pull/14"
+      "immutable_release_workflow_pr": "https://github.com/Yanakiev432/pdfcraft/pull/14",
+      "release_workflow_pin_pr": "https://github.com/Yanakiev432/pdfcraft/pull/14",
+      "release_publisher_sha256_gate": "IMPLEMENTED_AND_WINDOWS_NEGATIVE_TEST_PASS",
+      "release_publisher_gate_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39389665100",
+      "release_software_signature": "NOT_PROVIDED"
     },
     "wordcraft": {
       "repo": "Yanakiev432/wordcraft",
@@ -41,7 +45,10 @@
       "integrated_windows_opc_sign_verify_url": "https://github.com/Yanakiev432/wordcraft/actions/runs/39324661195",
       "trusted_windows_release_gate_pr": "https://github.com/Yanakiev432/wordcraft/pull/5",
       "unsigned_exe_msi_dll_rejection_ci": "https://github.com/Yanakiev432/wordcraft/actions/runs/39389000918",
-      "unsigned_exe_msi_dll_rejection": "PASS"
+      "unsigned_exe_msi_dll_rejection": "PASS",
+      "release_gate_pr": "https://github.com/Yanakiev432/wordcraft/pull/5",
+      "release_publisher_sha256_gate": "IMPLEMENTED; NEGATIVE_CI_PASS",
+      "release_publisher_gate_ci": "https://github.com/Yanakiev432/wordcraft/actions/runs/39389674261"
     },
     "gridcraft": {
       "repo": "Yanakiev432/gridcraft",
@@ -56,7 +63,10 @@
       "full_ci_url": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324674853",
       "trusted_windows_release_gate_pr": "https://github.com/Yanakiev432/gridcraft/pull/5",
       "unsigned_exe_msi_dll_rejection_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39389004998",
-      "unsigned_exe_msi_dll_rejection": "PASS"
+      "unsigned_exe_msi_dll_rejection": "PASS",
+      "release_gate_pr": "https://github.com/Yanakiev432/gridcraft/pull/5",
+      "release_publisher_sha256_gate": "IMPLEMENTED; NEGATIVE_CI_PASS",
+      "release_publisher_gate_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39389679277"
     }
   },
   "compliance": {
@@ -89,7 +99,13 @@
     "upstream_release_workflow_immutable_commit_pinning": "IMPLEMENTED_IN_THREE_DRAFT_PRS",
     "own_release_software_artifact_signed": "NO",
     "external_signpath_authorization": "NOT_APPROVED",
-    "release_ready": false
+    "release_ready": false,
+    "immutable_upstream_release_workflow_sha": "d7bf8f06e138618890d0ebe8a84a18b010bf3f66",
+    "publisher_certificate_fingerprint_required": "SHA256_DER_64_HEX",
+    "publisher_certificate_preapproved": "NO; SignPath Foundation review pending",
+    "upstream_signed_msi_not_our_publisher": "ENFORCED_BY_PIN",
+    "trusted_windows_package_release_ready": false,
+    "final_public_release": "NO_GO"
   },
   "links": {
     "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
@@ -129,6 +145,10 @@
     "On 2026-10-20 the B-Trust email search revealed acknowledgement for SD1614999 only; no credentials or technical reply",
     "Official B-Trust service webpage permits manual .tsq upload for nonprofit purposes; not an automated API grant",
     "PdfCraft one old About UI test required deleted upstream logo; regression updated and fmt repaired, latest full CI pending",
-    "SignPath Foundation additionally requires a released public artifact in the intended form and verifiable project reputation. None claimed."
+    "SignPath Foundation additionally requires a released public artifact in the intended form and verifiable project reputation. None claimed.",
+    "2026-10-20: Pdf/Word/Grid release entrypoints pin privileged external reusable workflow to reviewed SHA instead of @main",
+    "2026-10-20: Trusted-release Authenticode guard requires a preapproved 64-hex SHA256 certificate digest, rejects an unrelated valid signer, missing pin or unsigned MSI",
+    "2026-10-20: Fork public release workflows not yet proven to invoke -RequireTrustedRelease automatically; do not publish until enforced and approved",
+    "2026-10-20: Publisher certificate, authorization and authenticated Windows SAC acceptance remain external prerequisites"
   ]
 }
