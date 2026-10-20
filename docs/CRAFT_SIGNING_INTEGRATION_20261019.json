@@ -19,10 +19,10 @@
       "latest_quality_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39380355034",
       "pending_manual_pair_validation": "PR12_CI_OFFLINE_PASS",
       "manual_pair_verifier_pr": "https://github.com/Yanakiev432/pdfcraft/pull/12",
-      "pending_inflight_manual_tsrsession": "PR13_COMPILATION_AND_CRYPTO_CI_IN_PROGRESS",
+      "pending_inflight_manual_tsrsession": "NATIVE_SYNTHETIC_RUST_PDF_E2E_PASS; WINDOWS_CNG_COMPILE_IN_PROGRESS",
       "inflight_manual_tsa_pr": "https://github.com/Yanakiev432/pdfcraft/pull/13",
-      "inflight_manual_tsa_sha": "0c1c33b3f4399d77535cea47e70fb9ee98a20553",
-      "inflight_manual_tsa_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39384399368"
+      "inflight_manual_tsa_sha": "88a294bbd9a3e57ecd5079ff99094d4886ffb9b3",
+      "inflight_manual_tsa_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39384816399"
     },
     "wordcraft": {
       "repo": "Yanakiev432/wordcraft",
@@ -69,8 +69,10 @@
     "offline_resumable_PAdES_session": "NOT_IMPLEMENTED; IN_FLIGHT_ONE_PROCESS_SESSION_IMPLEMENTED",
     "signpath_foundation_fork_signed_upstream": "PASS",
     "signpath_foundation_public_release_and_project_reputation_gate": "NOT_VERIFIED",
-    "manual_tsa_source_and_verifier": "IMPLEMENTED_IN_PR13; E2E_CI_PENDING",
-    "provider_qtsa_qualified_at_gentime": "NOT_CHECKED"
+    "manual_tsa_source_and_verifier": "NATIVE_CMS_SAME_SIGNATURE_E2E_PASS; MANUAL_TSQ_TSR_PAIR_PASS; WINDOWS_CNG_HARDWARE_NOT_TESTED",
+    "provider_qtsa_qualified_at_gentime": "NOT_CHECKED",
+    "native_manual_tsq_tsr_protocol": "NO_NETWORK_IMPLEMENTED_AND_TESTED",
+    "windows_cng_manual_smartcard_signing_example": "IMPLEMENTED; COMPILATION_PENDING; HARDWARE_PIN_INTEROP_PENDING"
   },
   "links": {
     "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
@@ -84,7 +86,9 @@
     "pdfcraft_integrated_full_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39325007059",
     "gridcraft_integrated_full_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324674853",
     "signpath_application_dossier": "https://github.com/Yanakiev432/craft-fork-method/blob/feature/craft-signing-release-gates-20261019/docs/SIGNPATH_FOUNDATION_APPLICATION_DOSSIER_20261019.md",
-    "btrust_manual_acceptance": "https://github.com/Yanakiev432/pdfcraft/blob/integration/craft-signing-qa-20261019/docs/BTRUST_MANUAL_QUALIFIED_TSA_ACCEPTANCE.md"
+    "btrust_manual_acceptance": "https://github.com/Yanakiev432/pdfcraft/blob/integration/craft-signing-qa-20261019/docs/BTRUST_MANUAL_QUALIFIED_TSA_ACCEPTANCE.md",
+    "pdfcraft_native_manual_handoff_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39384399368",
+    "pdfcraft_windows_cng_manual_handoff_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39384816399"
   },
   "release_policy": "Never merge or publish a qualified/trusted release on the strength of synthetic cryptographic tests, signed upstream binaries or completed non-signing CI alone.",
   "next_required_actions": [
