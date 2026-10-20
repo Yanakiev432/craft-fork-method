@@ -1,0 +1,241 @@
+{
+  "schema": "craft.signing.source-review-evidence.v1",
+  "snapshot_utc": "2026-10-20T11:10:15.5898517Z",
+  "source": "LIVE_PUBLIC_GITHUB_API_PLUS_LOCAL_RA_AUDIT",
+  "read_only_monitor": {
+    "repository": "Yanakiev432/craft-fork-method",
+    "script": "scripts/Test-CraftRemoteIntegration.ps1",
+    "ci_run": "https://github.com/Yanakiev432/craft-fork-method/actions/runs/39409709164",
+    "output_windows": "C:\\Users\\User\\Documents\\CraftReleaseAudits\\integration-20261020-verified-04.json",
+    "output_sha256": "2570e85a6310377c6449a641908db46a47785fb6586dab9617af577eac91dbda",
+    "exact_commit_ci_ready": true,
+    "verification_count": 18,
+    "passing": 18
+  },
+  "review": {
+    "all_four_prs_ready_for_review": true,
+    "all_four_clean_mergeable": true,
+    "all_four_unmerged": true
+  },
+  "repositories": [
+    {
+      "key": "pdfcraft",
+      "repository": "Yanakiev432/pdfcraft",
+      "pr": "https://github.com/Yanakiev432/pdfcraft/pull/15",
+      "head_sha": "4eb8aa42e3e3418bc156dcc9c6b69e04f8af9690",
+      "base": "integration/craft-signing-qa-20261019",
+      "review_status": "READY_FOR_REVIEW",
+      "merged": false,
+      "ci_status": "PASS",
+      "checks": [
+        {
+          "name": "CI",
+          "run_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988822",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "4eb8aa42e3e3418bc156dcc9c6b69e04f8af9690"
+        },
+        {
+          "name": "Windows ARM64",
+          "run_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406989426",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "4eb8aa42e3e3418bc156dcc9c6b69e04f8af9690"
+        },
+        {
+          "name": "Packaging lint",
+          "run_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406989159",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "4eb8aa42e3e3418bc156dcc9c6b69e04f8af9690"
+        },
+        {
+          "name": "Modified fork brand gate",
+          "run_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988860",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "4eb8aa42e3e3418bc156dcc9c6b69e04f8af9690"
+        },
+        {
+          "name": "Immutable privileged release workflow gate",
+          "run_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988777",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "4eb8aa42e3e3418bc156dcc9c6b69e04f8af9690"
+        },
+        {
+          "name": "Manual RFC3161 TSQ-TSR offline checks",
+          "run_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988848",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "4eb8aa42e3e3418bc156dcc9c6b69e04f8af9690"
+        },
+        {
+          "name": "Manual RFC3161 in-flight handoff (no network)",
+          "run_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406988598",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "4eb8aa42e3e3418bc156dcc9c6b69e04f8af9690"
+        }
+      ]
+    },
+    {
+      "key": "wordcraft",
+      "repository": "Yanakiev432/wordcraft",
+      "pr": "https://github.com/Yanakiev432/wordcraft/pull/5",
+      "head_sha": "d6811ab1d70b5b068964de74b490fea21e749add",
+      "base": "integration/craft-signing-qa-20261019",
+      "review_status": "READY_FOR_REVIEW",
+      "merged": false,
+      "ci_status": "PASS",
+      "checks": [
+        {
+          "name": "OPC wordcraft signing acceptance",
+          "run_url": "https://github.com/Yanakiev432/wordcraft/actions/runs/39408792872",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "d6811ab1d70b5b068964de74b490fea21e749add"
+        },
+        {
+          "name": "Packaging lint",
+          "run_url": "https://github.com/Yanakiev432/wordcraft/actions/runs/39408797435",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "d6811ab1d70b5b068964de74b490fea21e749add"
+        },
+        {
+          "name": "Modified fork brand gate",
+          "run_url": "https://github.com/Yanakiev432/wordcraft/actions/runs/39408796934",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "d6811ab1d70b5b068964de74b490fea21e749add"
+        },
+        {
+          "name": "Trusted Windows release gate (negative controls)",
+          "run_url": "https://github.com/Yanakiev432/wordcraft/actions/runs/39408796912",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "d6811ab1d70b5b068964de74b490fea21e749add"
+        },
+        {
+          "name": "Windows ARM64",
+          "run_url": "https://github.com/Yanakiev432/wordcraft/actions/runs/39408797427",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "d6811ab1d70b5b068964de74b490fea21e749add"
+        }
+      ]
+    },
+    {
+      "key": "gridcraft",
+      "repository": "Yanakiev432/gridcraft",
+      "pr": "https://github.com/Yanakiev432/gridcraft/pull/5",
+      "head_sha": "33a1095642d71d6edcd11331bb0510c626dffed1",
+      "base": "integration/craft-signing-qa-20261019",
+      "review_status": "READY_FOR_REVIEW",
+      "merged": false,
+      "ci_status": "PASS",
+      "checks": [
+        {
+          "name": "OPC gridcraft signing acceptance",
+          "run_url": "https://github.com/Yanakiev432/gridcraft/actions/runs/39408799962",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "33a1095642d71d6edcd11331bb0510c626dffed1"
+        },
+        {
+          "name": "Packaging lint",
+          "run_url": "https://github.com/Yanakiev432/gridcraft/actions/runs/39408805222",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "33a1095642d71d6edcd11331bb0510c626dffed1"
+        },
+        {
+          "name": "Modified fork brand gate",
+          "run_url": "https://github.com/Yanakiev432/gridcraft/actions/runs/39408804692",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "33a1095642d71d6edcd11331bb0510c626dffed1"
+        },
+        {
+          "name": "Trusted Windows release gate (negative controls)",
+          "run_url": "https://github.com/Yanakiev432/gridcraft/actions/runs/39408804698",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "33a1095642d71d6edcd11331bb0510c626dffed1"
+        },
+        {
+          "name": "CI",
+          "run_url": "https://github.com/Yanakiev432/gridcraft/actions/runs/39408804695",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "33a1095642d71d6edcd11331bb0510c626dffed1"
+        }
+      ]
+    },
+    {
+      "key": "craft-signing-core",
+      "repository": "Yanakiev432/craft-signing-core",
+      "pr": "https://github.com/Yanakiev432/craft-signing-core/pull/3",
+      "head_sha": "080adc424c4b8f32d2f00e9fdad096e1be6ac85a",
+      "base": "feature/opc-xml-dsig-signer",
+      "review_status": "READY_FOR_REVIEW",
+      "merged": false,
+      "ci_status": "PASS",
+      "checks": [
+        {
+          "name": "Shared signing core acceptance",
+          "run_url": "https://github.com/Yanakiev432/craft-signing-core/actions/runs/39408410458",
+          "status": "completed",
+          "conclusion": "success",
+          "head_sha": "080adc424c4b8f32d2f00e9fdad096e1be6ac85a"
+        }
+      ]
+    }
+  ],
+  "non_bypassable_external_gates": {
+    "btrust_hardware_user_pin_via_provider_ui": {
+      "status": "NOT_ACCEPTED",
+      "notes": "CurrentUser/My read-only presence is not proof of a hardware signature or qualified status."
+    },
+    "tsq_tsr_response_qualified_at_gen_time": {
+      "status": "NOT_ACCEPTED",
+      "notes": "Qualified TSA requires verified EU LOTL/national Trusted List chain + permitted service usage."
+    },
+    "final_real_document_eu_dss": {
+      "status": "NOT_ACCEPTED",
+      "notes": "Real final B-T/LT/LTA acceptance must be independently verified, not inferred from Open TSA synthetic tests."
+    },
+    "office_real_btrust_compatibility": {
+      "status": "NOT_ACCEPTED",
+      "notes": "Real Microsoft Word and Excel interoperability with the selected B-Trust identity."
+    },
+    "signpath_foundation_free_oss_code_signing": {
+      "status": "NOT_APPROVED",
+      "notes": "Provider approval and approved publisher cert required."
+    },
+    "own_msi_exe_authenticode_sac": {
+      "status": "NOT_ACCEPTED",
+      "notes": "A signed upstream MSI is not a signature on modified Craft builds. Approved publisher exact DER SHA256 pin mandatory."
+    }
+  },
+  "release_ready": false,
+  "merge_main_automatically": false,
+  "public_trusted_release_enabled": false,
+  "tsa_provider_policy": {
+    "ACCV": {
+      "endpoint": "http://tss.accv.es:8318/tsa",
+      "usage": "NO_UNRESTRICTED_FREE_COMMERCIAL_ACCESS; FREE_PERSONAL_USE_ONLY",
+      "official": "https://www.accv.es/servicios/empresas/sellado-de-tiempo/"
+    },
+    "APED": {
+      "endpoint": "https://timestamp.aped.gov.gr/qtss",
+      "usage": "NO_AUTHENTICATION_IN_SETUP; UNRESTRICTED_THIRD_PARTY_USAGE_NOT_ESTABLISHED",
+      "official": "https://aped.gov.gr/allagi-archis-chronosimansis-chronosfragidas-tis-aped/"
+    },
+    "BORICA": {
+      "usage": "REQUEST_SD1614999_ACKNOWLEDGED_NO_APPROVED_AUTOMATION; MANUAL_NONPROFIT_FORM_AVAILABLE",
+      "official": "https://www.b-trust.bg/services/time-stamp-issue"
+    }
+  }
+}

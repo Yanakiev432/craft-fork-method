@@ -1,0 +1,40 @@
+name: Craft signing release gate smoke
+on:
+  pull_request:
+    paths:
+      - 'scripts/Test-CraftSigningReleaseGates.ps1'
+      - '.github/workflows/craft-signing-release-gates.yml'
+  push:
+    branches:
+      - feature/craft-signing-release-gates-20261019
+    paths:
+      - 'scripts/Test-CraftSigningReleaseGates.ps1'
+      - '.github/workflows/craft-signing-release-gates.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fail-closed-audit:
+    runs-on: windows-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Report must remain non-release-ready without external attestations
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $report=(& ./scripts/Test-CraftSigningReleaseGates.ps1 -RepositoriesRoot $env:RUNNER_TEMP | Out-String | ConvertFrom-Json)
+          if ($report.schema -ne 'craft.signing.release-gates.v1') { throw 'Unexpected release gate schema' }
+          if ($report.release_ready -ne $false) { throw 'FAIL OPEN: qualified release without any evidence' }
+          if ($report.external_tsa_called -ne $false -or $report.private_key_used -ne $false) { throw 'Read-only guarantee missing' }
+          if (@($report.external_gates | Where-Object { $_.status -ne 'PASS' }).Count -lt 4) { throw 'External blockers were lost' }
+          Write-Host 'PASS: Craft gates fail closed with no secret, signer, or third-party calls'
+      - name: RequireReleaseReady switch must return nonzero
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $pwshExe=(Get-Process -Id $PID).Path
+          $script=Join-Path $PWD 'scripts/Test-CraftSigningReleaseGates.ps1'
+          & $pwshExe -NoProfile -NonInteractive -File $script -RepositoriesRoot $env:RUNNER_TEMP -RequireReleaseReady | Out-Null
+          if ($LASTEXITCODE -eq 0) { throw 'FAIL OPEN: release with unproven QES/TSA/Windows signing was accepted' }
+          $global:LASTEXITCODE=0

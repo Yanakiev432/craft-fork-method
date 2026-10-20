@@ -1,0 +1,82 @@
+name: Craft exact commit cross-app acceptance
+on:
+  pull_request:
+    paths:
+      - 'scripts/Test-CraftRemoteIntegration.ps1'
+      - '.github/workflows/remote-integration-status.yml'
+  push:
+    branches:
+      - feature/craft-signing-release-gates-20261019
+    paths:
+      - 'scripts/Test-CraftRemoteIntegration.ps1'
+      - '.github/workflows/remote-integration-status.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  strict-offline-positive-negative:
+    runs-on: windows-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Verify exact-SHA CI matrix and stale/missing/failed negative cases
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $script=Join-Path $PWD 'scripts/Test-CraftRemoteIntegration.ps1'
+          $cases=@(
+            @{repo='Yanakiev432/pdfcraft'; sha='4eb8aa42e3e3418bc156dcc9c6b69e04f8af9690'; workflow=@('CI','Windows ARM64','Packaging lint','Modified fork brand gate','Immutable privileged release workflow gate','Manual RFC3161 TSQ-TSR offline checks','Manual RFC3161 in-flight handoff (no network)')},
+            @{repo='Yanakiev432/wordcraft'; sha='d6811ab1d70b5b068964de74b490fea21e749add'; workflow=@('OPC wordcraft signing acceptance','Packaging lint','Modified fork brand gate','Trusted Windows release gate (negative controls)','Windows ARM64')},
+            @{repo='Yanakiev432/gridcraft'; sha='33a1095642d71d6edcd11331bb0510c626dffed1'; workflow=@('OPC gridcraft signing acceptance','Packaging lint','Modified fork brand gate','Trusted Windows release gate (negative controls)','CI')},
+            @{repo='Yanakiev432/craft-signing-core';sha='080adc424c4b8f32d2f00e9fdad096e1be6ac85a';workflow=@('Shared signing core acceptance')}
+          )
+          $list=@()
+          foreach($case in $cases){
+            $rows=@()
+            foreach($name in $case.workflow){
+              $rows+=@{name=$name; head_sha=$case.sha; status='completed';conclusion='success';created_at='2026-10-20T13:00:00Z';id=123456}
+            }
+            $list+=@{repo=$case.repo;head_sha=$case.sha;workflow_runs=$rows}
+          }
+          $snapshot=@{repositories=$list}
+          $path=Join-Path $env:RUNNER_TEMP 'valid-exact-head.json'
+          $snapshot|ConvertTo-Json -Depth 25|Set-Content -LiteralPath $path -Encoding utf8
+          $positive=(& $script -SnapshotFile $path | Out-String)|ConvertFrom-Json -Depth 25
+          if(-not $positive.exact_commit_ci_ready -or $positive.trusted_release_ready){throw 'CI cannot grant trusted release; positive integration should pass'}
+          if(@($positive.repositories | Where-Object {-not $_.integration_ci_ready}).Count -ne 0){throw 'Valid fixture CI not accepted'}
+          $jsonPath=Join-Path $env:RUNNER_TEMP 'exact-head-report.json'
+          # A successful invoked PowerShell script does not reset the shell's
+          # stale LASTEXITCODE from unrelated earlier native commands.
+          # ErrorActionPreference=Stop and JSON read-back are authoritative.
+          & $script -SnapshotFile $path -OutputFile $jsonPath | Out-Null
+          if(-not (Test-Path -LiteralPath $jsonPath -PathType Leaf)){
+            throw 'Report generation did not create its output'
+          }
+          $written=Get-Content -LiteralPath $jsonPath -Raw | ConvertFrom-Json -Depth 25
+          if(-not $written.exact_commit_ci_ready -or $written.trusted_release_ready){
+            throw 'Report JSON roundtrip invalid or release gate failed open'
+          }
+          $alreadyExistsRejected=$false
+          try { & $script -SnapshotFile $path -OutputFile $jsonPath | Out-Null }
+          catch { $alreadyExistsRejected=$true }
+          if(-not $alreadyExistsRejected){throw 'FAIL_OPEN: report overwritten without unique path'}
+          Write-Host 'JSON_ROUNDTRIP_AND_NO_OVERWRITE=PASS'
+          $snapshot.repositories[0].head_sha='bad-branch-head'
+          $snapshot|ConvertTo-Json -Depth 25|Set-Content -LiteralPath $path -Encoding utf8
+          $badHead=(& $script -SnapshotFile $path | Out-String)|ConvertFrom-Json -Depth 25
+          if($badHead.exact_commit_ci_ready){throw 'FAIL_OPEN: changed PR head accepted'}
+          $snapshot.repositories[0].head_sha=$cases[0].sha
+          $snapshot.repositories[1].workflow_runs[0].conclusion='failure'
+          $snapshot|ConvertTo-Json -Depth 25|Set-Content -LiteralPath $path -Encoding utf8
+          $badRun=(& $script -SnapshotFile $path | Out-String)|ConvertFrom-Json -Depth 25
+          if($badRun.exact_commit_ci_ready){throw 'FAIL_OPEN: failed CI accepted'}
+          $snapshot.repositories[1].workflow_runs[0].conclusion='success'
+          $snapshot.repositories[2].workflow_runs=@()
+          $snapshot|ConvertTo-Json -Depth 25|Set-Content -LiteralPath $path -Encoding utf8
+          $missing=(& $script -SnapshotFile $path | Out-String)|ConvertFrom-Json -Depth 25
+          if($missing.exact_commit_ci_ready){throw 'FAIL_OPEN: missing CI accepted'}
+          Write-Host 'EXACT_SHA_ALL_PASS_FIXTURE=PASS'
+          Write-Host 'STALE_HEAD_FAILED_AND_MISSING_WORKFLOWS_REJECTED=PASS'
+          Write-Host 'QUALIFIED_EIDAS_AND_TRUSTED_WINDOWS_RELEASE=NO_GO'

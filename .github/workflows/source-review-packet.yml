@@ -1,0 +1,38 @@
+name: Craft source review packet fail-closed validation
+on:
+  pull_request:
+    paths:
+      - 'docs/CRAFT_SIGNING_SOURCE_REVIEW_EVIDENCE_20261020.json'
+      - 'scripts/check_craft_source_review.py'
+      - '.github/workflows/source-review-packet.yml'
+  push:
+    branches:
+      - feature/craft-signing-release-gates-20261019
+    paths:
+      - 'docs/CRAFT_SIGNING_SOURCE_REVIEW_EVIDENCE_20261020.json'
+      - 'scripts/check_craft_source_review.py'
+      - '.github/workflows/source-review-packet.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  enforce-immutable-evidence-shape:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Structure + negative attack fixtures
+        run: python3 -B scripts/check_craft_source_review.py --self-test
+      - name: Assert no qualified release claim
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("docs/CRAFT_SIGNING_SOURCE_REVIEW_EVIDENCE_20261020.json").read_text())
+          assert d["release_ready"] is False
+          assert d["public_trusted_release_enabled"] is False
+          assert d["read_only_monitor"]["verification_count"] == 18
+          print("SOURCE_REVIEW_CI=PASS; SIGNED_MSI=NO_GO; QUALIFIED_QTSA=NOT_VERIFIED")
+          PY
