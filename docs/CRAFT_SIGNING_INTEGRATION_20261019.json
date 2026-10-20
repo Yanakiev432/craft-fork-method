@@ -58,7 +58,8 @@
         "arm64": "PASS_BUILD_PACKAGE_INSTALL_RUN_UNINSTALL",
         "arm64_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39406989426"
       },
-      "review_status": "READY_FOR_REVIEW; CLEAN; NOT_MERGED"
+      "review_status": "MERGED_TO_MAIN_AND_SOURCE_TREE_VERIFIED",
+      "main_merge_commit": "682e878d68b0fb4a9fd4f3a9284c22042637439e"
     },
     "wordcraft": {
       "repo": "Yanakiev432/wordcraft",
@@ -83,7 +84,8 @@
       "current_opc_state": "PASS",
       "current_arm64_state": "PASS_BUILD_PACKAGE_INSTALL_RUN_UNINSTALL",
       "current_arm64_run": "https://github.com/Yanakiev432/wordcraft/actions/runs/39408797427",
-      "review_status": "READY_FOR_REVIEW; CLEAN; NOT_MERGED"
+      "review_status": "MERGED_TO_MAIN_AND_SOURCE_TREE_VERIFIED",
+      "main_merge_commit": "bf527b8aa6bf38971aeb9ee135bb85e27f463477"
     },
     "gridcraft": {
       "repo": "Yanakiev432/gridcraft",
@@ -110,7 +112,8 @@
       "current_opc_state": "PASS",
       "current_full_ci_state": "PASS",
       "current_full_ci_run": "https://github.com/Yanakiev432/gridcraft/actions/runs/39408804695",
-      "review_status": "READY_FOR_REVIEW; CLEAN; NOT_MERGED"
+      "review_status": "MERGED_TO_MAIN_AND_SOURCE_TREE_VERIFIED",
+      "main_merge_commit": "357f6a77ba9bd2a615b9088152df5e714538956d"
     },
     "craft-signing-core": {
       "repo": "Yanakiev432/craft-signing-core",
@@ -126,20 +129,22 @@
       "btrust_real_hardware": "NOT_TESTED",
       "eidas_qualified": "NOT_VERIFIED",
       "temporary_repo_writer_workflow": "REMOVED",
-      "review_state": "READY_FOR_REVIEW; CLEAN; NOT_MERGED",
-      "mergeable": true
+      "review_state": "MERGED_TO_MAIN_AND_SOURCE_TREE_VERIFIED",
+      "mergeable": true,
+      "main_merge_commit": "8a32b189b3b2201b61b28f787bcc17a4269ca9f4"
     },
     "craft-fork-method": {
       "repository": "Yanakiev432/craft-fork-method",
       "pr": "https://github.com/Yanakiev432/craft-fork-method/pull/1",
-      "review_status": "READY_FOR_REVIEW",
-      "merged": false,
+      "review_status": "MERGED_TO_MAIN",
+      "merged": true,
       "acceptance_ci": {
         "review_packet": "PASS",
         "cross_repo_ci_negative_tests": "PASS",
         "qualification_release_fail_closed": "PASS"
       },
-      "last_reviewed_commit": "7214320df5942c558077efe16bc894adc5b39400"
+      "last_reviewed_commit": "7214320df5942c558077efe16bc894adc5b39400",
+      "main_merge_commit": "157442cc573c24a941ac230bee1694c6b118264d"
     }
   },
   "compliance": {
@@ -234,7 +239,22 @@
     },
     "actual_signpath_foundation_approval": "NOT_RECEIVED",
     "actual_btrust_qtsa_positive_final_eu_dss": "NOT_VERIFIED",
-    "public_signed_windows_release": "NO_GO"
+    "public_signed_windows_release": "NO_GO",
+    "main_promotion": {
+      "source_merged": true,
+      "merged_repositories": 5,
+      "exact_reviewed_source_tree_proofs": 5,
+      "github_actions_live_aggregate_gate": "PASS",
+      "provenance_ci": "https://github.com/Yanakiev432/craft-fork-method/actions/runs/39424043091",
+      "pr": "https://github.com/Yanakiev432/craft-fork-method/pull/2",
+      "provenance_manifest": "docs/CRAFT_MAIN_MERGE_PROVENANCE_20261020.json",
+      "technical_source_ci": "18_OF_18_PASS",
+      "qualified_public_release": "NO_GO",
+      "trusted_msi_release": "NO_GO"
+    },
+    "btrust_full_pades_b_t_lt_lta": "NOT_VERIFIED_IN_FINAL_DOCUMENT",
+    "real_btrust_windows_cng_user_pin": "NOT_INDEPENDENTLY_ACCEPTED",
+    "our_trusted_windows_msi": "NOT_SIGNED_OR_ACCEPTED"
   },
   "links": {
     "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
@@ -295,6 +315,8 @@
     "2026-10-20T11:10Z: live Lenovo v04 read-only audit exact-head checks 18/18 passed, output SHA256 2570e85a6310377c6449a641908db46a47785fb6586dab9617af577eac91dbda",
     "2026-10-20: software CI passed for all four modules, including PdfCraft full Windows/Linux, WordCraft ARM64 install/run/uninstall, GridCraft full CI, Core OPC. These do not constitute legally qualified QES or an approved signed MSI.",
     "2026-10-20: review manifest/packet created and validated on GitHub Actions #39413904210; all 4 app/core PRs and method PR ready for review, none merged",
-    "2026-10-20: ACCV explicitly free PERSONAL only; APED publishes HTTPS no-auth setup but rights for unrestricted commercial/automated Craft use remain unestablished; no provider probe sent"
+    "2026-10-20: ACCV explicitly free PERSONAL only; APED publishes HTTPS no-auth setup but rights for unrestricted commercial/automated Craft use remain unestablished; no provider probe sent",
+    "2026-10-20: 5 exact PR trees merged to main; authenticated GitHub Actions #39424043091 independently verified sources, ancestry and disabled releases.",
+    "2026-10-20: source integration complete; real eIDAS-qualified TSA, physical B-Trust CNG PIN, final EU DSS, SignPath Foundation and own signed MSI remain NO_GO."
   ]
 }
