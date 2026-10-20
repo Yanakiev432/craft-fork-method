@@ -16,7 +16,13 @@
       "prior_local_eu_dss": "INDETERMINATE_EXPECTED_TEST_IDENTITY",
       "integration_test_evidence": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39325001378",
       "integration_test_rfc3161_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39325001378",
-      "latest_quality_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39380355034"
+      "latest_quality_url": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39380355034",
+      "pending_manual_pair_validation": "PR12_CI_OFFLINE_PASS",
+      "manual_pair_verifier_pr": "https://github.com/Yanakiev432/pdfcraft/pull/12",
+      "pending_inflight_manual_tsrsession": "PR13_COMPILATION_AND_CRYPTO_CI_IN_PROGRESS",
+      "inflight_manual_tsa_pr": "https://github.com/Yanakiev432/pdfcraft/pull/13",
+      "inflight_manual_tsa_sha": "0c1c33b3f4399d77535cea47e70fb9ee98a20553",
+      "inflight_manual_tsa_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39384399368"
     },
     "wordcraft": {
       "repo": "Yanakiev432/wordcraft",
@@ -57,12 +63,14 @@
     "real_btrust_usb_word_excel_interoperability": "NOT_CHECKED",
     "trusted_signed_our_own_exe_msi": "NOT_AVAILABLE",
     "clean_windows_sac_install_uninstall": "NOT_CHECKED",
-    "btrust_support_ticket": "SD1614999_CREATED_2026-10-19_NO_TECHNICAL_RESPONSE",
+    "btrust_support_ticket": "SD1614999_ACKNOWLEDGED; NOT_TECHNICAL_BLOCKER_FOR_DEVELOPMENT",
     "btrust_official_nonprofit_manual_tsq_tsr_form": "AVAILABLE_SUBJECT_TO_NONPROFIT_PROVIDER_CONDITIONS",
     "btrust_official_nonprofit_manual_tsq_tsr_form_url": "https://www.b-trust.bg/services/time-stamp-issue",
-    "offline_resumable_PAdES_session": "NOT_IMPLEMENTED",
+    "offline_resumable_PAdES_session": "NOT_IMPLEMENTED; IN_FLIGHT_ONE_PROCESS_SESSION_IMPLEMENTED",
     "signpath_foundation_fork_signed_upstream": "PASS",
-    "signpath_foundation_public_release_and_project_reputation_gate": "NOT_VERIFIED"
+    "signpath_foundation_public_release_and_project_reputation_gate": "NOT_VERIFIED",
+    "manual_tsa_source_and_verifier": "IMPLEMENTED_IN_PR13; E2E_CI_PENDING",
+    "provider_qtsa_qualified_at_gentime": "NOT_CHECKED"
   },
   "links": {
     "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
@@ -80,6 +88,8 @@
   },
   "release_policy": "Never merge or publish a qualified/trusted release on the strength of synthetic cryptographic tests, signed upstream binaries or completed non-signing CI alone.",
   "next_required_actions": [
+    "Finish PR13 no-network PDF-in-flight CI, separate QTSA trust-store validation",
+    "Wire ManualTsaHandoff to user-authorized native B-Trust CNG/PKCS11 signer without exposing PIN or keys",
     "Obtain qualified TSA service/appropriate use authorization and verify token against EU Trusted Lists",
     "Independent EU DSS validation of real final B-Trust B-T/LT/LTA PDF",
     "Physical B-Trust PIN via provider UI for Office acceptance",
