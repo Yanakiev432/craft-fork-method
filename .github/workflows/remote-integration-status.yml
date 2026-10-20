@@ -46,6 +46,18 @@ jobs:
           $positive=(& $script -SnapshotFile $path | Out-String)|ConvertFrom-Json -Depth 25
           if(-not $positive.exact_commit_ci_ready -or $positive.trusted_release_ready){throw 'CI cannot grant trusted release; positive integration should pass'}
           if(@($positive.repositories | Where-Object {-not $_.integration_ci_ready}).Count -ne 0){throw 'Valid fixture CI not accepted'}
+          $jsonPath=Join-Path $env:RUNNER_TEMP 'exact-head-report.json'
+          & $script -SnapshotFile $path -OutputFile $jsonPath | Out-Null
+          if($LASTEXITCODE -ne 0){throw 'Report generation returned failure'}
+          $written=Get-Content -LiteralPath $jsonPath -Raw | ConvertFrom-Json -Depth 25
+          if(-not $written.exact_commit_ci_ready -or $written.trusted_release_ready){
+            throw 'Report JSON roundtrip invalid or release gate failed open'
+          }
+          $alreadyExistsRejected=$false
+          try { & $script -SnapshotFile $path -OutputFile $jsonPath | Out-Null }
+          catch { $alreadyExistsRejected=$true }
+          if(-not $alreadyExistsRejected){throw 'FAIL_OPEN: report overwritten without unique path'}
+          Write-Host 'JSON_ROUNDTRIP_AND_NO_OVERWRITE=PASS'
           $snapshot.repositories[0].head_sha='bad-branch-head'
           $snapshot|ConvertTo-Json -Depth 25|Set-Content -LiteralPath $path -Encoding utf8
           $badHead=(& $script -SnapshotFile $path | Out-String)|ConvertFrom-Json -Depth 25
