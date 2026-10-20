@@ -9,7 +9,7 @@
       "pr": "https://github.com/Yanakiev432/pdfcraft/pull/11",
       "brand_source_ci": "PASS",
       "packaging_lint_ci": "PASS",
-      "full_ci": "RECHECK_RUNNING_AFTER_ABOUT_UI_TEST_FIX",
+      "full_ci": "IN_PROGRESS",
       "integration_test_rfc3161": "PASS_INTEGRATED_NONQUALIFIED_OPEN_TSA_E2E",
       "prior_nonqualified_e2e": "PASS",
       "prior_independent_poppler_openssl": "PASS",
@@ -23,7 +23,12 @@
       "inflight_manual_tsa_pr": "https://github.com/Yanakiev432/pdfcraft/pull/13",
       "inflight_manual_tsa_sha": "88a294bbd9a3e57ecd5079ff99094d4886ffb9b3",
       "inflight_manual_tsa_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39384816399",
-      "windows_cng_manual_tsa_compile": "PASS"
+      "windows_cng_manual_tsa_compile": "PASS",
+      "manual_tsa_security_hardening": "4MiB_BOUNDED_OPEN_FILE_READ; REJECT_PREMATURE_MARKER_AND_NONCE_MISMATCH",
+      "manual_tsa_hardening_commit": "e9bfbc6062d2af5e8971aa9157104b59a0e83452",
+      "manual_tsa_hardening_ci": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39388076062",
+      "manual_tsa_hardening_targeted_ci": "PASS",
+      "immutable_release_workflow_pr": "https://github.com/Yanakiev432/pdfcraft/pull/14"
     },
     "wordcraft": {
       "repo": "Yanakiev432/wordcraft",
@@ -33,7 +38,10 @@
       "packaging_lint_ci": "PASS",
       "integrated_windows_opc_sign_verify": "PASS",
       "prior_windows_opc_sign_verify": "PASS",
-      "integrated_windows_opc_sign_verify_url": "https://github.com/Yanakiev432/wordcraft/actions/runs/39324661195"
+      "integrated_windows_opc_sign_verify_url": "https://github.com/Yanakiev432/wordcraft/actions/runs/39324661195",
+      "trusted_windows_release_gate_pr": "https://github.com/Yanakiev432/wordcraft/pull/5",
+      "unsigned_exe_msi_dll_rejection_ci": "https://github.com/Yanakiev432/wordcraft/actions/runs/39389000918",
+      "unsigned_exe_msi_dll_rejection": "PASS"
     },
     "gridcraft": {
       "repo": "Yanakiev432/gridcraft",
@@ -45,7 +53,10 @@
       "integrated_windows_opc_sign_verify": "PASS",
       "prior_windows_opc_sign_verify": "PASS",
       "integrated_windows_opc_evidence": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324667825",
-      "full_ci_url": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324674853"
+      "full_ci_url": "https://github.com/Yanakiev432/gridcraft/actions/runs/39324674853",
+      "trusted_windows_release_gate_pr": "https://github.com/Yanakiev432/gridcraft/pull/5",
+      "unsigned_exe_msi_dll_rejection_ci": "https://github.com/Yanakiev432/gridcraft/actions/runs/39389004998",
+      "unsigned_exe_msi_dll_rejection": "PASS"
     }
   },
   "compliance": {
@@ -73,7 +84,12 @@
     "manual_tsa_source_and_verifier": "PASS_SOFTWARE_TEST_E2E_AND_WINDOWS_CNG_COMPILATION; REAL_HARDWARE_AND_QTSA_NOT_CHECKED",
     "provider_qtsa_qualified_at_gentime": "NOT_CHECKED",
     "native_manual_tsq_tsr_protocol": "NO_NETWORK_IMPLEMENTED_AND_TESTED",
-    "windows_cng_manual_smartcard_signing_example": "COMPILES_SUCCESSFULLY; HARDWARE_PIN_INTEROP_PENDING"
+    "windows_cng_manual_smartcard_signing_example": "COMPILES_SUCCESSFULLY; HARDWARE_PIN_INTEROP_PENDING",
+    "upstream_release_workflow_ref": "storytold/craft-common-actions@d7bf8f06e138618890d0ebe8a84a18b010bf3f66",
+    "upstream_release_workflow_immutable_commit_pinning": "IMPLEMENTED_IN_THREE_DRAFT_PRS",
+    "own_release_software_artifact_signed": "NO",
+    "external_signpath_authorization": "NOT_APPROVED",
+    "release_ready": false
   },
   "links": {
     "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
