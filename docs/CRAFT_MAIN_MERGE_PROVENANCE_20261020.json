@@ -80,5 +80,6 @@
   "clean_windows_sac_test_pass": false,
   "public_trusted_release_ready": false,
   "release_preflight_status": "MUST_REMAIN_FAIL_CLOSED",
-  "notes": "Main merge trees match previously CI-tested exact PR heads; CI is not equivalent to real eIDAS QTSA, human Word/Excel interoperability, or a signed public release. Future main changes require fresh review evidence."
+  "notes": "Main merge trees match previously CI-tested exact PR heads; CI is not equivalent to real eIDAS QTSA, human Word/Excel interoperability, or a signed public release. Future main changes require fresh review evidence. Successor source mergers are accepted only with exact Git parent/tree checks and independently verified successful CI runs; the initial five merge records are retained.",
+  "reviewed_followups": []
 }
