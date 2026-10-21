@@ -129,6 +129,42 @@
       ],
       "github_pr": "https://github.com/Yanakiev432/gridcraft/pull/10",
       "scope": "RustSec 2026-0382 rustls-webpki 0.103.16 security patch, no QES claim"
+    },
+    {
+      "repo": "Yanakiev432/pdfcraft",
+      "previous_merge_sha": "682e878d68b0fb4a9fd4f3a9284c22042637439e",
+      "reviewed_head_sha": "3ac93f7dfff3614319b62a02170a72982b1eeb93",
+      "merge_sha": "05d9512fbbc8c437013686481869e4641f1e29f5",
+      "reviewed_tree_sha": "4baa51fadee6165361553a3924acddbd467239ae",
+      "review_status": "APPROVED_SOURCE_CI",
+      "required_ci_runs": [
+        {
+          "workflow": "Strict RFC3161 DER request gate",
+          "run_id": 39653721823
+        },
+        {
+          "workflow": "CI",
+          "run_id": 39653721696
+        },
+        {
+          "workflow": "Windows ARM64",
+          "run_id": 39653722097
+        },
+        {
+          "workflow": "Modified fork brand gate",
+          "run_id": 39653721644
+        },
+        {
+          "workflow": "Packaging lint",
+          "run_id": 39653722121
+        },
+        {
+          "workflow": "Nix",
+          "run_id": 39653721603
+        }
+      ],
+      "github_pr": "https://github.com/Yanakiev432/pdfcraft/pull/21",
+      "scope": "Strict RFC3161 DER requests + RUSTSEC-2026-0382/0383 fixed TLS versions; technical E2E, not qualified eIDAS TSA"
     }
   ]
 }
