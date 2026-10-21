@@ -1,0 +1,61 @@
+name: Read-only Craft hardware and Office preflight
+on:
+  pull_request:
+    paths:
+      - 'scripts/Test-CraftOperatorReadiness.ps1'
+      - '.github/workflows/operator-readiness-preflight.yml'
+  push:
+    branches:
+      - feature/operator-readiness-preflight-20261021
+    paths:
+      - 'scripts/Test-CraftOperatorReadiness.ps1'
+      - '.github/workflows/operator-readiness-preflight.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  no-pin-no-key-offline-fixtures:
+    runs-on: windows-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Parse PowerShell without executing a signer
+        shell: pwsh
+        run: |
+          $errors=$null
+          [Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD 'scripts/Test-CraftOperatorReadiness.ps1'),[ref]$null,[ref]$errors)|Out-Null
+          if($errors){throw ($errors|Out-String)}
+      - name: Positive/negative metadata fixtures, no QES claim, exclusive file report
+        shell: pwsh
+        run: |
+          $ErrorActionPreference='Stop'
+          $tool=Join-Path $PWD 'scripts/Test-CraftOperatorReadiness.ps1'
+          $fixture=Join-Path $env:RUNNER_TEMP 'craft-preflight-fixture.json'
+          $report=Join-Path $env:RUNNER_TEMP 'craft-preflight-report.json'
+          @{certificates_total=8;btrust_certificates=2;btrust_key_reference_count=2;word_com_registered=$true;excel_com_registered=$true}|ConvertTo-Json|Set-Content -LiteralPath $fixture
+          $good=(& $tool -FixturePath $fixture -OutputPath $report|Out-String)|ConvertFrom-Json
+          if(-not $good.possible_operator_interop_setup -or $good.public_release_ready -or $good.private_key_opened -or $good.pin_requested){throw 'Potential operator setup cannot certify release'}
+          $onDisk=Get-Content -LiteralPath $report -Raw|ConvertFrom-Json
+          if(-not $onDisk.possible_operator_interop_setup){throw 'JSON report round-trip failed'}
+          $overwritten=$false
+          try { & $tool -FixturePath $fixture -OutputPath $report|Out-Null } catch {$overwritten=$true}
+          if(-not $overwritten){throw 'Evidence overwrite accepted'}
+          @{certificates_total=1;btrust_certificates=0;btrust_key_reference_count=0;word_com_registered=$false;excel_com_registered=$false}|ConvertTo-Json|Set-Content -LiteralPath $fixture
+          $blocked=(& $tool -FixturePath $fixture|Out-String)|ConvertFrom-Json
+          if($blocked.possible_operator_interop_setup -or $blocked.public_release_ready){throw 'FAIL_OPEN: prerequisites absent'}
+          $invalid=$false
+          @{certificates_total=1;btrust_certificates=2;btrust_key_reference_count=3;word_com_registered=$true;excel_com_registered=$true}|ConvertTo-Json|Set-Content -LiteralPath $fixture
+          try {& $tool -FixturePath $fixture|Out-Null} catch {$invalid=$true}
+          if(-not $invalid){throw 'FAIL_OPEN: nonsensical counts accepted'}
+          Write-Host 'READ_ONLY_PREREQUISITES=PASS'
+          Write-Host 'NO_PIN_NO_PRIVATE_KEY_NO_QES=PASS'
+      - name: Runner live read-only registration check, never signing
+        shell: pwsh
+        run: |
+          $result=(& ./scripts/Test-CraftOperatorReadiness.ps1|Out-String)|ConvertFrom-Json
+          if($result.source -ne 'WINDOWS_CURRENT_USER_METADATA' -or $result.public_release_ready -or $result.pin_requested){
+            throw 'Unexpected live report or attempted signature'
+          }
+          Write-Host 'WINDOWS_METADATA_ONLY=PASS'
