@@ -80,5 +80,27 @@
   "clean_windows_sac_test_pass": false,
   "public_trusted_release_ready": false,
   "release_preflight_status": "MUST_REMAIN_FAIL_CLOSED",
-  "notes": "Main merge trees match previously CI-tested exact PR heads; CI is not equivalent to real eIDAS QTSA, human Word/Excel interoperability, or a signed public release. Future main changes require fresh review evidence."
+  "notes": "Main merge trees match previously CI-tested exact PR heads; CI is not equivalent to real eIDAS QTSA, human Word/Excel interoperability, or a signed public release. Future main changes require fresh review evidence. Successor source mergers are accepted only with exact Git parent/tree checks and independently verified successful CI runs; the initial five merge records are retained.",
+  "reviewed_followups": [
+    {
+      "repo": "Yanakiev432/craft-signing-core",
+      "previous_merge_sha": "8a32b189b3b2201b61b28f787bcc17a4269ca9f4",
+      "reviewed_head_sha": "5d3574cd45acf2a4b794f3de242c9ccd200b1b63",
+      "merge_sha": "2001935c2b0002a4a2dfd394995dc60bae6327ff",
+      "reviewed_tree_sha": "c99425a4b5e1375d0579fba408d61345c5770e49",
+      "review_status": "APPROVED_SOURCE_CI",
+      "required_ci_runs": [
+        {
+          "workflow": "Universal Craft signed-file digest envelope",
+          "run_id": 39434300179
+        },
+        {
+          "workflow": "Shared signing core acceptance",
+          "run_id": 39434300364
+        }
+      ],
+      "github_pr": "https://github.com/Yanakiev432/craft-signing-core/pull/4",
+      "scope": "Universal CMS sidecar file digest signing, synthetic keys; not format-native or qualified QES"
+    }
+  ]
 }

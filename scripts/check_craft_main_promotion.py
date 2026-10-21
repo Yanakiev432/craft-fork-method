@@ -61,6 +61,28 @@ def validate(snapshot: dict):
         require(item.get("main_may_advance_only_with_reviewed_additional_commits") is (name=="craft-fork-method"), "main evolution policy unexpected")
     require(found == set(EXPECTED), "missing repository")
 
+    followups = snapshot.get("reviewed_followups", [])
+    require(isinstance(followups, list), "reviewed followups must be a list")
+    expected_previous = {item["repo"]: item["merge_sha"] for item in items}
+    for entry in followups:
+        repo = entry.get("repo", "")
+        require(repo in {"Yanakiev432/pdfcraft", "Yanakiev432/wordcraft", "Yanakiev432/gridcraft", "Yanakiev432/craft-signing-core"}, "unrecognized successor repository")
+        require(entry.get("previous_merge_sha") == expected_previous[repo], "successor does not extend the previously accepted merge")
+        for field in ("reviewed_head_sha", "merge_sha", "reviewed_tree_sha"):
+            require(bool(HEX40.fullmatch(entry.get(field, ""))), f"successor {field} must be an exact Git SHA")
+        require(entry["merge_sha"] != entry["reviewed_head_sha"], "successor merge must preserve reviewed branch history")
+        require(entry.get("review_status") == "APPROVED_SOURCE_CI", "successor is not reviewed")
+        checks = entry.get("required_ci_runs", [])
+        require(isinstance(checks, list) and checks, "successor must have source CI evidence")
+        used = set()
+        for check in checks:
+            name = check.get("workflow", "")
+            run_id = check.get("run_id")
+            require(isinstance(name, str) and bool(name) and name not in used, "successor CI workflow missing or duplicate")
+            require(type(run_id) is int and run_id > 0, "successor CI run ID invalid")
+            used.add(name)
+        expected_previous[repo] = entry["merge_sha"]
+
 
 def offline_negative_controls(snapshot:dict):
     validate(snapshot)
@@ -72,6 +94,8 @@ def offline_negative_controls(snapshot:dict):
         lambda d: d["modules"][2].__setitem__("blocking_public_release_required", False),
         lambda d: d["modules"][3].__setitem__("required_ci_count", 0),
         lambda d: d["modules"].pop(1),
+        lambda d: d.__setitem__("reviewed_followups", [{"repo": "Yanakiev432/pdfcraft", "previous_merge_sha": "0" * 40}]),
+        lambda d: d.__setitem__("reviewed_followups", "not-a-list"),
     ]
     for i,modify in enumerate(vectors):
         sample=copy.deepcopy(snapshot)
@@ -107,7 +131,30 @@ def audit_live(snapshot: dict):
             comparison=get_json(base+"/compare/"+item["merge_sha"]+"...main")
             require(comparison.get("behind_by")==0 and comparison.get("status") in {"ahead","identical"}, f"{repo} main no longer descends from reviewed baseline")
         else:
-            require(current == item["merge_sha"], f"{repo} main has unreviewed changes relative to source gate")
+            expected_current = item["merge_sha"]
+            for entry in snapshot.get("reviewed_followups", []):
+                if entry["repo"] != repo:
+                    continue
+                successor = get_json(base + "/git/commits/" + entry["merge_sha"])
+                successor_source = get_json(base + "/git/commits/" + entry["reviewed_head_sha"])
+                successor_parents = {p["sha"] for p in successor.get("parents", [])}
+                require(expected_current in successor_parents, f"{repo} successor omits previously reviewed main parent")
+                require(entry["reviewed_head_sha"] in successor_parents, f"{repo} successor omits accepted PR branch head")
+                require(successor["tree"]["sha"] == successor_source["tree"]["sha"] == entry["reviewed_tree_sha"], f"{repo} successor source tree diverges from reviewed PR")
+                runs = get_json(base + "/actions/runs?head_sha=" + entry["reviewed_head_sha"] + "&per_page=100")
+                available = runs.get("workflow_runs", [])
+                for check in entry["required_ci_runs"]:
+                    require(
+                        any(
+                            x.get("name") == check["workflow"] and x.get("id") == check["run_id"]
+                            and x.get("head_sha") == entry["reviewed_head_sha"]
+                            and x.get("status") == "completed" and x.get("conclusion") == "success"
+                            for x in available
+                        ),
+                        f"{repo} exact successor CI evidence missing or not successful: {check['workflow']}",
+                    )
+                expected_current = entry["merge_sha"]
+            require(current == expected_current, f"{repo} main has unreviewed changes relative to successor chain")
         denied=None
         if item["blocking_public_release_required"]:
             data=get_json(base+"/contents/.github/workflows/release.yml?ref=main")
