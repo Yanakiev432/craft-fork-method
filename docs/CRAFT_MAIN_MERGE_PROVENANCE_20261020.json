@@ -101,6 +101,94 @@
       ],
       "github_pr": "https://github.com/Yanakiev432/craft-signing-core/pull/4",
       "scope": "Universal CMS sidecar file digest signing, synthetic keys; not format-native or qualified QES"
+    },
+    {
+      "repo": "Yanakiev432/gridcraft",
+      "previous_merge_sha": "357f6a77ba9bd2a615b9088152df5e714538956d",
+      "reviewed_head_sha": "3dba537c7ccc1a13dc51c773d66a49172c311c59",
+      "merge_sha": "ce358c2da4460fb961e429a90b0daa0f4ce7fd19",
+      "reviewed_tree_sha": "768e67b325f373939227efb019562682f491ba30",
+      "review_status": "APPROVED_SOURCE_CI",
+      "required_ci_runs": [
+        {
+          "workflow": "TLS trust advisory locked-version gate",
+          "run_id": 39654912479
+        },
+        {
+          "workflow": "CI",
+          "run_id": 39654912517
+        },
+        {
+          "workflow": "Nix",
+          "run_id": 39654912457
+        },
+        {
+          "workflow": "Packaging lint",
+          "run_id": 39654912761
+        }
+      ],
+      "github_pr": "https://github.com/Yanakiev432/gridcraft/pull/10",
+      "scope": "RustSec 2026-0382 rustls-webpki 0.103.16 security patch, no QES claim"
+    },
+    {
+      "repo": "Yanakiev432/pdfcraft",
+      "previous_merge_sha": "682e878d68b0fb4a9fd4f3a9284c22042637439e",
+      "reviewed_head_sha": "3ac93f7dfff3614319b62a02170a72982b1eeb93",
+      "merge_sha": "05d9512fbbc8c437013686481869e4641f1e29f5",
+      "reviewed_tree_sha": "4baa51fadee6165361553a3924acddbd467239ae",
+      "review_status": "APPROVED_SOURCE_CI",
+      "required_ci_runs": [
+        {
+          "workflow": "Strict RFC3161 DER request gate",
+          "run_id": 39653721823
+        },
+        {
+          "workflow": "CI",
+          "run_id": 39653721696
+        },
+        {
+          "workflow": "Windows ARM64",
+          "run_id": 39653722097
+        },
+        {
+          "workflow": "Modified fork brand gate",
+          "run_id": 39653721644
+        },
+        {
+          "workflow": "Packaging lint",
+          "run_id": 39653722121
+        },
+        {
+          "workflow": "Nix",
+          "run_id": 39653721603
+        }
+      ],
+      "github_pr": "https://github.com/Yanakiev432/pdfcraft/pull/21",
+      "scope": "Strict RFC3161 DER requests + RUSTSEC-2026-0382/0383 fixed TLS versions; technical E2E, not qualified eIDAS TSA"
+    },
+    {
+      "repo": "Yanakiev432/wordcraft",
+      "previous_merge_sha": "bf527b8aa6bf38971aeb9ee135bb85e27f463477",
+      "reviewed_head_sha": "0e54e83333537fe2c05ad94ed499983ceba92663",
+      "merge_sha": "0cbd5274fb1b246da0ca7413a16f9b532ff414da",
+      "reviewed_tree_sha": "38f67d6bd4a8f9e9c2ee86e513d1980ae373277c",
+      "review_status": "APPROVED_SOURCE_CI",
+      "required_ci_runs": [
+        {
+          "workflow": "TLS trust advisory locked-version gate",
+          "run_id": 39654906331
+        },
+        {
+          "workflow": "Nix",
+          "run_id": 39654906308
+        },
+        {
+          "workflow": "Packaging lint",
+          "run_id": 39654906959
+        }
+      ],
+      "github_pr": "https://github.com/Yanakiev432/wordcraft/pull/9",
+      "scope": "RUSTSEC-2026-0382 locked rustls-webpki 0.103.16; Windows and Linux Printing subjobs PASS; macOS Printing queued and not counted as a completed run"
     }
   ]
 }
