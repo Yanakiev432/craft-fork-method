@@ -101,6 +101,34 @@
       ],
       "github_pr": "https://github.com/Yanakiev432/craft-signing-core/pull/4",
       "scope": "Universal CMS sidecar file digest signing, synthetic keys; not format-native or qualified QES"
+    },
+    {
+      "repo": "Yanakiev432/gridcraft",
+      "previous_merge_sha": "357f6a77ba9bd2a615b9088152df5e714538956d",
+      "reviewed_head_sha": "3dba537c7ccc1a13dc51c773d66a49172c311c59",
+      "merge_sha": "ce358c2da4460fb961e429a90b0daa0f4ce7fd19",
+      "reviewed_tree_sha": "768e67b325f373939227efb019562682f491ba30",
+      "review_status": "APPROVED_SOURCE_CI",
+      "required_ci_runs": [
+        {
+          "workflow": "TLS trust advisory locked-version gate",
+          "run_id": 39654912479
+        },
+        {
+          "workflow": "CI",
+          "run_id": 39654912517
+        },
+        {
+          "workflow": "Nix",
+          "run_id": 39654912457
+        },
+        {
+          "workflow": "Packaging lint",
+          "run_id": 39654912761
+        }
+      ],
+      "github_pr": "https://github.com/Yanakiev432/gridcraft/pull/10",
+      "scope": "RustSec 2026-0382 rustls-webpki 0.103.16 security patch, no QES claim"
     }
   ]
 }
