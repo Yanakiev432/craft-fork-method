@@ -1,6 +1,6 @@
 {
   "schema": "craft.signing.integration-checkpoint.v2",
-  "as_of_utc": "2026-10-20",
+  "as_of_utc": "2026-10-21",
   "overall_release_ready": false,
   "software": {
     "pdfcraft": {
@@ -154,7 +154,7 @@
     "signed_upstream_msi_pdfcraft": "AUTHENTICODE_VALID",
     "signed_upstream_msi_wordcraft": "AUTHENTICODE_VALID",
     "signed_upstream_msi_gridcraft": "AUTHENTICODE_VALID",
-    "signpath_foundation_application": "NOT_SUBMITTED_OR_APPROVED",
+    "signpath_foundation_application": "SUBMITTED_2026-10-21_DECLINED_2026-10-21_INSUFFICIENT_PUBLIC_ADOPTION",
     "free_qualified_tsa": "NOT_ACCEPTED_AS_PRODUCTION_SERVICE",
     "btrust_document_qes_baseline_b": "PREVIOUS_INDEPENDENT_PASS",
     "final_pades_b_t": "NO_QUALIFIED_INDEPENDENT_PASS",
@@ -237,7 +237,7 @@
       "all_four_source_ci": "18/18_PASS",
       "trusted_release": "NO_GO"
     },
-    "actual_signpath_foundation_approval": "NOT_RECEIVED",
+    "actual_signpath_foundation_approval": "DECLINED_NO_FREE_CERTIFICATE",
     "actual_btrust_qtsa_positive_final_eu_dss": "NOT_VERIFIED",
     "public_signed_windows_release": "NO_GO",
     "main_promotion": {
@@ -254,7 +254,14 @@
     },
     "btrust_full_pades_b_t_lt_lta": "NOT_VERIFIED_IN_FINAL_DOCUMENT",
     "real_btrust_windows_cng_user_pin": "NOT_INDEPENDENTLY_ACCEPTED",
-    "our_trusted_windows_msi": "NOT_SIGNED_OR_ACCEPTED"
+    "our_trusted_windows_msi": "NOT_SIGNED_OR_ACCEPTED",
+    "signpath_decision_date": "2026-10-21",
+    "signpath_approval_reapplication": "POSSIBLE_AFTER_GENUINE_PUBLIC_COMMUNITY_RECOGNITION",
+    "free_artifact_provenance": "GITHUB_ACTIONS_SIGSTORE_AVAILABLE_PUBLIC_REPOSITORIES; NOT_AUTHENTICODE",
+    "sigstore_release_workflow": "NOT_YET_TESTED",
+    "sac_compatible_signed_msi": "NOT_AVAILABLE",
+    "public_trusted_release_ready": false,
+    "signpath_free_alternative_research_doc": "docs/CODE_SIGNING_FREE_PROVENANCE_ALTERNATIVE_20261021.md"
   },
   "links": {
     "pdfcraft_rfc3161_e2e": "https://github.com/Yanakiev432/pdfcraft/actions/runs/39317592488",
@@ -317,6 +324,8 @@
     "2026-10-20: review manifest/packet created and validated on GitHub Actions #39413904210; all 4 app/core PRs and method PR ready for review, none merged",
     "2026-10-20: ACCV explicitly free PERSONAL only; APED publishes HTTPS no-auth setup but rights for unrestricted commercial/automated Craft use remain unestablished; no provider probe sent",
     "2026-10-20: 5 exact PR trees merged to main; authenticated GitHub Actions #39424043091 independently verified sources, ancestry and disabled releases.",
-    "2026-10-20: source integration complete; real eIDAS-qualified TSA, physical B-Trust CNG PIN, final EU DSS, SignPath Foundation and own signed MSI remain NO_GO."
+    "2026-10-20: source integration complete; real eIDAS-qualified TSA, physical B-Trust CNG PIN, final EU DSS, SignPath Foundation and own signed MSI remain NO_GO.",
+    "2026-10-21: SignPath Foundation application submitted and declined based on insufficient public visibility/adoption; no free publisher certificate issued.",
+    "2026-10-21: GitHub Actions Sigstore artifact attestations available to public repositories; do NOT equate provenance with Microsoft Authenticode/Smart App Control."
   ]
 }
