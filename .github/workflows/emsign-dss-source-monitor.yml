@@ -1,0 +1,45 @@
+name: Craft TLS and DSS exact-commit source security monitor
+on:
+  pull_request:
+    paths:
+      - 'scripts/check_craft_emsign_qtss_20261021.py'
+      - '.github/workflows/emsign-dss-source-monitor.yml'
+  push:
+    branches:
+      - feature/emsign-dss-security-gate-20261021
+    paths:
+      - 'scripts/check_craft_emsign_qtss_20261021.py'
+      - '.github/workflows/emsign-dss-source-monitor.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fail-closed-negative-controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Reject spoofed CI, stale PR commits and vulnerable dependencies
+        run: python3 -B scripts/check_craft_emsign_qtss_20261021.py --self-test
+  current-public-repository-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Audit public GitHub source heads and CI without modifying repositories
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python3 -B scripts/check_craft_emsign_qtss_20261021.py --live --output "$RUNNER_TEMP/craft-20261021-security.json"
+          python3 - "$RUNNER_TEMP/craft-20261021-security.json" <<'PY'
+          import json,sys
+          d=json.load(open(sys.argv[1]))
+          assert d["trusted_public_release_ready"] is False
+          assert d["required_checks"]==17
+          assert len(d["repositories"])==3
+          print("TRUSTED_RELEASE=NO_GO; SOURCE_SECURITY_MONITOR=RUN")
+          PY
