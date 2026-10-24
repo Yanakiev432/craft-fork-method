@@ -24,3 +24,13 @@
 ## Synchronization policy
 
 Keep `upstream` remote separate from `origin`. Review changes before merge. Do not force push `main`, automatically merge upstream or deploy before the local acceptance gate.
+
+## Executable local gate policy (24 October 2026)
+
+Use `templates/edition-gates-v1.json` and `scripts/Test-CraftEditionGates.ps1` for fail-closed **evidence-integrity** validation. Only `PENDING`, `BLOCKED`, `FAIL` and `PASS` are accepted states. A `PASS` requires a **unique** relative evidence path within a configured evidence directory and a byte-equal SHA-256 fingerprint; paths outside that root, duplicate evidence, nonexistent files or reused hashes with the wrong file are rejected.
+
+These G0–G7 machine checks certify **that a claimed evidence file is present and byte-identical**; they do **not** evaluate whether a license permits rebranding, whether a publisher approved a binary or whether a QES document meets eIDAS. Until qualified human review and actual provider acceptance, the only valid `release_status` value is `NO_GO`. Even 8/8 machine gate records give `READY_FOR_HUMAN_REVIEW_ONLY`, not a release.
+
+Source baseline capture and subsequent independent re-verification are provided by `New-CraftBaseline.ps1` and `Test-CraftBaseline.ps1`. The `origin` URL is only locally configured metadata, **not authenticated GitHub evidence**. A local-only project requires an explicit `-AllowLocalOnly` argument; its provenance remains limited to local Git commit/tree integrity.
+
+Automated failure-control acceptance is documented in `BASELINE_V1_ACCEPTANCE_20261024.md`.
