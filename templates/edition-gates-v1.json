@@ -1,0 +1,62 @@
+{
+  "schema": "craft.fork.gates.v1",
+  "edition": "example-craft-edition",
+  "release_status": "NO_GO",
+  "gates": [
+    {
+      "id": "G0",
+      "status": "PENDING",
+      "evidence_path": "",
+      "evidence_sha256": ""
+    },
+    {
+      "id": "G1",
+      "status": "PENDING",
+      "evidence_path": "",
+      "evidence_sha256": ""
+    },
+    {
+      "id": "G2",
+      "status": "PENDING",
+      "evidence_path": "",
+      "evidence_sha256": ""
+    },
+    {
+      "id": "G3",
+      "status": "PENDING",
+      "evidence_path": "",
+      "evidence_sha256": ""
+    },
+    {
+      "id": "G4",
+      "status": "PENDING",
+      "evidence_path": "",
+      "evidence_sha256": ""
+    },
+    {
+      "id": "G5",
+      "status": "PENDING",
+      "evidence_path": "",
+      "evidence_sha256": ""
+    },
+    {
+      "id": "G6",
+      "status": "PENDING",
+      "evidence_path": "",
+      "evidence_sha256": ""
+    },
+    {
+      "id": "G7",
+      "status": "PENDING",
+      "evidence_path": "",
+      "evidence_sha256": ""
+    }
+  ],
+  "external_approvals": {
+    "licensing_and_trademarks": "NOT_APPROVED",
+    "public_publisher_identity": "NOT_APPROVED",
+    "hardware_or_qualified_signature": "NOT_EVALUATED",
+    "deployment": "NOT_APPROVED"
+  },
+  "remarks": "Local evidence checks only. Passing all G0-G7 prepares human review and NEVER grants release."
+}
