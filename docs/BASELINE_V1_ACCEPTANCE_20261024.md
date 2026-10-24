@@ -49,7 +49,8 @@ A live SHA-256 pin from the Signing Core baseline was accepted as synthetic **G1
 
 **Final v1 local acceptance: 25/25 negative controls PASS; 3 provenance baselines PASS.** Proof files:
 
-- `C:\Users\User\Documents\CRAFT_FORK_METHOD_V1_ACCEPTANCE_20261024\negative-v1\acceptance.json`
+- `C:\Users\User\Documents\CRAFT_FORK_METHOD_V1_ACCEPTANCE_20261024\negative-v2\acceptance.json`
 - `C:\Users\User\Documents\CRAFT_FORK_METHOD_V1_ACCEPTANCE_20261024\edition-gates-v1-tests\acceptance.json`
 
 These are local algorithm acceptance results. They do not certify real software redistribution rights, PDF eIDAS qualification, installer public-signing status or remote GitHub identity.
+The negative-run harness now constructs its own disposable synthetic dirty Git checkout inside the evidence directory. It no longer relies on an existing project being temporarily dirty; rerun on a clean workstation also gives **13/13 PASS**.
