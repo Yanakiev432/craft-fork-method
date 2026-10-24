@@ -3,7 +3,6 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory=$true)][string]$CleanRepositoryPath,
-    [Parameter(Mandatory=$true)][string]$DirtyRepositoryPath,
     [Parameter(Mandatory=$true)][string]$BaselinePath,
     [Parameter(Mandatory=$true)][string]$EvidenceDirectory
 )
@@ -51,8 +50,15 @@ Expect-Rejection 'OUTPUT_OVERWRITE' {
 Expect-Rejection 'OUTPUT_INSIDE_GIT' {
     & $create -RepositoryPath $CleanRepositoryPath -OutputDirectory (Join-Path $CleanRepositoryPath 'do-not-create-baseline-inside')
 }
+# Test reproducibly using an isolated synthetic dirty Git checkout.
+$syntheticRepo = Join-Path $dir 'synthetic-dirty-checkout'
+[void](New-Item -ItemType Directory -Path $syntheticRepo)
+& git init -q $syntheticRepo
+if ($LASTEXITCODE -ne 0) { throw 'Synthetic dirty Git fixture creation failed' }
+[IO.File]::WriteAllText((Join-Path $syntheticRepo 'untracked-marker.txt'),
+    'synthetic untracked fixture', [Text.UTF8Encoding]::new($false))
 Expect-Rejection 'DIRTY_WORKTREE' {
-    & $create -RepositoryPath $DirtyRepositoryPath -OutputDirectory (Join-Path $dir 'do-not-create-dirty-baseline')
+    & $create -RepositoryPath $syntheticRepo -OutputDirectory (Join-Path $dir 'do-not-create-dirty-baseline')
 }
 Expect-Rejection 'MISSING_ORIGIN' {
     & $create -RepositoryPath 'C:\Users\User\Documents\GitHub\craft-suite-installer' -OutputDirectory (Join-Path $dir 'do-not-create-without-origin')
